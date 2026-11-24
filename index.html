@@ -1,0 +1,2277 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C# Einstieg</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <span class="header-tag">Lernmaterial</span>
+  <h1>C# <span class="hl">Einstieg</span></h1>
+  <p>Entscheiden, wiederholen, absichern. Struktogramm, if else, switch, Schleifen, TryParse und Try Catch.</p>
+</header>
+<div class="layout">
+<nav class="sidebar">
+  <div class="sidebar-label">Kapitel</div>
+  <button class="nav-btn active" data-tab="start"><span class="nav-num">0</span>Überblick</button>
+  <button class="nav-btn" data-tab="grundlagen"><span class="nav-num">1</span>Grundlagen</button>
+  <button class="nav-btn" data-tab="struktogramm"><span class="nav-num">2</span>Struktogramm</button>
+  <button class="nav-btn" data-tab="ifelse"><span class="nav-num">3</span>if else</button>
+  <button class="nav-btn" data-tab="switch"><span class="nav-num">4</span>switch case</button>
+  <button class="nav-btn" data-tab="schleifen"><span class="nav-num">5</span>Schleifen im Überblick</button>
+  <button class="nav-btn" data-tab="while"><span class="nav-num">6</span>while</button>
+  <button class="nav-btn" data-tab="dowhile"><span class="nav-num">7</span>do while</button>
+  <button class="nav-btn" data-tab="for"><span class="nav-num">8</span>for und foreach</button>
+  <button class="nav-btn" data-tab="trockentest"><span class="nav-num">9</span>Schleife durchspielen</button>
+  <button class="nav-btn" data-tab="tryparse"><span class="nav-num">10</span>TryParse</button>
+  <button class="nav-btn" data-tab="trycatch"><span class="nav-num">11</span>Try Catch</button>
+  <button class="nav-btn" data-tab="zusammen"><span class="nav-num">12</span>Alles zusammen</button>
+  <button class="nav-btn" data-tab="spick"><span class="nav-num">13</span>Spickzettel</button>
+  <button class="nav-btn" data-tab="uebungen"><span class="nav-num">Ü</span>Übungen</button>
+</nav>
+<main class="content-area">
+
+<section class="tab-content active" id="tab-start">
+<h2 class="section-title">Überblick</h2>
+<p class="section-subtitle">Worum es geht und wie die Einheit aufgebaut ist.</p>
+<p>Ein Programm läuft von oben nach unten, eine Zeile nach der anderen. Das reicht für wenig. Sobald ein Programm auf Eingaben reagieren, Dinge wiederholen oder mit Fehlern klarkommen soll, brauchst du mehr. Genau darum geht es hier.</p>
+<div class="folie"><svg viewBox="0 0 760 290" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="290" rx="14" fill="#ffffff"/><text x="30.0" y="26.0" text-anchor="start" font-size="14" font-weight="700" fill="#1d1d1f">Alles, was in dieser Einheit vorkommt</text><rect x="30.0" y="44.0" width="165.0" height="224.0" rx="12" fill="#e8f2fd" stroke="#0071e3" stroke-width="1.6"/><text x="112.5" y="70.0" text-anchor="middle" font-size="13" font-weight="700" fill="#0071e3">Entscheiden</text><rect x="42" y="86" width="141" height="36" rx="8" fill="#ffffff" stroke="#0071e3" stroke-width="1.2"/><text x="112.5" y="109.0" text-anchor="middle" font-size="12" font-weight="700" fill="#1d1d1f">if else</text><rect x="42" y="130" width="141" height="36" rx="8" fill="#ffffff" stroke="#0071e3" stroke-width="1.2"/><text x="112.5" y="153.0" text-anchor="middle" font-size="12" font-weight="700" fill="#1d1d1f">switch case</text><rect x="208.0" y="44.0" width="165.0" height="224.0" rx="12" fill="#eefbf1" stroke="#34c759" stroke-width="1.6"/><text x="290.5" y="70.0" text-anchor="middle" font-size="13" font-weight="700" fill="#1e7b34">Wiederholen</text><rect x="220" y="86" width="141" height="36" rx="8" fill="#ffffff" stroke="#34c759" stroke-width="1.2"/><text x="290.5" y="109.0" text-anchor="middle" font-size="12" font-weight="700" fill="#1d1d1f">while</text><rect x="220" y="130" width="141" height="36" rx="8" fill="#ffffff" stroke="#34c759" stroke-width="1.2"/><text x="290.5" y="153.0" text-anchor="middle" font-size="12" font-weight="700" fill="#1d1d1f">do while</text><rect x="220" y="174" width="141" height="36" rx="8" fill="#ffffff" stroke="#34c759" stroke-width="1.2"/><text x="290.5" y="197.0" text-anchor="middle" font-size="12" font-weight="700" fill="#1d1d1f">for</text><rect x="220" y="218" width="141" height="36" rx="8" fill="#ffffff" stroke="#34c759" stroke-width="1.2"/><text x="290.5" y="241.0" text-anchor="middle" font-size="12" font-weight="700" fill="#1d1d1f">foreach</text><rect x="386.0" y="44.0" width="165.0" height="224.0" rx="12" fill="#fff7ec" stroke="#ff9500" stroke-width="1.6"/><text x="468.5" y="70.0" text-anchor="middle" font-size="13" font-weight="700" fill="#c77700">Absichern</text><rect x="398" y="86" width="141" height="36" rx="8" fill="#ffffff" stroke="#ff9500" stroke-width="1.2"/><text x="468.5" y="109.0" text-anchor="middle" font-size="12" font-weight="700" fill="#1d1d1f">TryParse</text><rect x="398" y="130" width="141" height="36" rx="8" fill="#ffffff" stroke="#ff9500" stroke-width="1.2"/><text x="468.5" y="153.0" text-anchor="middle" font-size="12" font-weight="700" fill="#1d1d1f">Try Catch</text><rect x="564.0" y="44.0" width="165.0" height="224.0" rx="12" fill="#f8f0fc" stroke="#af52de" stroke-width="1.6"/><text x="646.5" y="70.0" text-anchor="middle" font-size="13" font-weight="700" fill="#8a3fb5">Darstellen</text><rect x="576" y="86" width="141" height="36" rx="8" fill="#ffffff" stroke="#af52de" stroke-width="1.2"/><text x="646.5" y="109.0" text-anchor="middle" font-size="12" font-weight="700" fill="#1d1d1f">Struktogramm</text></svg></div>
+<ul class="keypoints">
+  <li><strong>if else</strong><span>Das Programm entscheidet: Läuft Block A oder Block B?</span></li>
+  <li><strong>switch case</strong><span>Ein Wert wird mit mehreren festen Möglichkeiten verglichen.</span></li>
+  <li><strong>Schleifen</strong><span>Ein Stück Code läuft mehrmals. Es gibt while, do while, for und foreach.</span></li>
+  <li><strong>TryParse</strong><span>Aus Text eine Zahl machen, ohne dass das Programm abstürzt.</span></li>
+  <li><strong>Try Catch</strong><span>Ein Fehler soll das Programm nicht beenden. Du fängst ihn ab.</span></li>
+  <li><strong>Struktogramm</strong><span>Ein Ablauf als Bild aus Kästen. So planst du, bevor du Code schreibst.</span></li>
+</ul>
+<div class="merkbild"><span class="merkbild-label">Merkbild</span>Entscheiden, wiederholen, absichern. Mehr braucht ein Programm für den Anfang nicht.</div>
+<h3>So ist die Einheit aufgebaut</h3>
+<table>
+  <tr><th>Kapitel</th><th>Thema</th></tr>
+  <tr><td>1</td><td>Grundlagen: Variablen, Vergleiche, Rechnen</td></tr>
+  <tr><td>2</td><td>Struktogramm: Abläufe zeichnen und lesen</td></tr>
+  <tr><td>3 und 4</td><td>Entscheiden: if else und switch case</td></tr>
+  <tr><td>5 bis 8</td><td>Schleifen: while, do while, for und foreach</td></tr>
+  <tr><td>9</td><td>Schleifen im Kopf durchspielen</td></tr>
+  <tr><td>10 und 11</td><td>Fehler vermeiden: TryParse und Try Catch</td></tr>
+  <tr><td>12 und 13</td><td>Alles zusammen und Spickzettel</td></tr>
+  <tr><td>Ü</td><td>Übungen</td></tr>
+</table>
+<div class="note info">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <div class="note-content">
+    <strong>Pseudocode und C#</strong>
+    In Prüfungen wird oft Pseudocode verwendet, also ein Ablauf in Textform mit Wörtern wie WENN und SOLANGE. Hier siehst du beides nebeneinander. Programmiert wird in C#.
+  </div>
+</div>
+</section>
+
+<section class="tab-content" id="tab-grundlagen">
+<h2 class="section-title">Grundlagen</h2>
+<p class="section-subtitle">Variablen, Rechnen, Vergleiche, Eingabe und Ausgabe.</p>
+<p>Bevor es um Entscheidungen und Schleifen geht, brauchst du ein paar Grundlagen. Die meisten kennst du vielleicht schon. Hier als kurzer Block zum Nachschlagen.</p>
+<h3>Variablen</h3>
+<p>Eine Variable ist ein Platz im Speicher mit einem Namen. Du legst einen Wert hinein und kannst ihn später wieder lesen oder ändern. Vor dem Namen steht der Datentyp. Er sagt, was für ein Wert hineinpasst.</p>
+<table>
+  <tr><th>Datentyp</th><th>Was passt hinein</th><th>Beispiel</th></tr>
+  <tr><td><code>int</code></td><td>Ganze Zahlen</td><td><code>int alter = 17;</code></td></tr>
+  <tr><td><code>double</code></td><td>Kommazahlen. Im Code mit Punkt geschrieben.</td><td><code>double preis = 4.5;</code></td></tr>
+  <tr><td><code>string</code></td><td>Text in Anführungszeichen</td><td><code>string name = "Anna";</code></td></tr>
+  <tr><td><code>bool</code></td><td>Wahr oder falsch</td><td><code>bool volljaehrig = true;</code></td></tr>
+  <tr><td><code>char</code></td><td>Ein einzelnes Zeichen</td><td><code>char buchstabe = 'A';</code></td></tr>
+</table>
+<pre><code><span class="kw">int</span> alter = <span class="num">17</span>;
+<span class="kw">double</span> preis = <span class="num">4.5</span>;
+<span class="kw">string</span> name = <span class="str">"Anna"</span>;
+<span class="kw">bool</span> volljaehrig = alter &gt;= <span class="num">18</span>;
+Console.<span class="fn">WriteLine</span>(name + <span class="str">" ist "</span> + alter + <span class="str">" Jahre alt."</span>);</code></pre>
+<p>Das einzelne Gleichheitszeichen heißt hier nicht gleich, sondern <strong>speichere</strong>. Rechts steht der Wert, links der Platz, in dem er landet. Im Pseudocode zeigt dafür ein Pfeil: <code>alter ← 17</code>.</p>
+<h3>Rechnen</h3>
+<table>
+  <tr><th>Zeichen</th><th>Bedeutung</th><th>Beispiel</th><th>Ergebnis</th></tr>
+  <tr><td><code>+</code> <code>-</code> <code>*</code></td><td>Plus, minus, mal</td><td><code>3 * 4</code></td><td>12</td></tr>
+  <tr><td><code>/</code></td><td>Geteilt. Bei zwei ganzen Zahlen bleibt nur der ganze Teil.</td><td><code>7 / 2</code></td><td>3</td></tr>
+  <tr><td><code>/</code></td><td>Mit einer Kommazahl wird genau gerechnet.</td><td><code>7 / 2.0</code></td><td>3.5</td></tr>
+  <tr><td><code>%</code></td><td>Rest einer Division</td><td><code>7 % 2</code></td><td>1</td></tr>
+  <tr><td><code>x++</code></td><td>Erhöht x um 1</td><td><code>x = 5; x++;</code></td><td>x ist 6</td></tr>
+  <tr><td><code>x--</code></td><td>Verringert x um 1</td><td><code>x = 5; x--;</code></td><td>x ist 4</td></tr>
+  <tr><td><code>x += 2</code></td><td>Addiert 2 zu x</td><td><code>x = 5; x += 2;</code></td><td>x ist 7</td></tr>
+</table>
+<div class="note tip">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <div class="note-content">
+    <strong>Der Rest ist wichtiger, als er klingt</strong>
+    Mit <code>%</code> erkennst du gerade Zahlen: <code>zahl % 2 == 0</code> ist wahr, wenn kein Rest bleibt. In Pseudocode heißt der Rest MOD.
+  </div>
+</div>
+<h3>Vergleichen und verknüpfen</h3>
+<p>Ein Vergleich ergibt immer <code>true</code> oder <code>false</code>. Damit entscheiden später if und while.</p>
+<table>
+  <tr><th>Zeichen</th><th>Bedeutung</th><th>Beispiel</th></tr>
+  <tr><td><code>==</code></td><td>ist gleich</td><td><code>alter == 18</code></td></tr>
+  <tr><td><code>!=</code></td><td>ist nicht gleich</td><td><code>alter != 18</code></td></tr>
+  <tr><td><code>&lt;</code> <code>&gt;</code></td><td>kleiner, größer</td><td><code>alter &lt; 18</code></td></tr>
+  <tr><td><code>&lt;=</code> <code>&gt;=</code></td><td>kleiner oder gleich, größer oder gleich</td><td><code>alter &gt;= 18</code></td></tr>
+  <tr><td><code>&amp;&amp;</code></td><td>und: beide Seiten müssen stimmen</td><td><code>alter &gt;= 18 &amp;&amp; hatAusweis</code></td></tr>
+  <tr><td><code>||</code></td><td>oder: mindestens eine Seite muss stimmen</td><td><code>tag == 6 || tag == 7</code></td></tr>
+  <tr><td><code>!</code></td><td>nicht: dreht wahr und falsch um</td><td><code>!hatAusweis</code></td></tr>
+</table>
+<div class="note warn">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+  <div class="note-content">
+    <strong>Ein Gleichheitszeichen oder zwei</strong>
+    <code>=</code> speichert einen Wert. <code>==</code> vergleicht. Wer in einer Bedingung nur ein <code>=</code> schreibt, bekommt einen Fehler. Das passiert am Anfang jedem.
+  </div>
+</div>
+<h3>Listen mit Arrays</h3>
+<p>Ein Array speichert mehrere Werte gleichen Typs unter einem Namen. Jeder Platz hat eine Nummer, den Index. Die Zählung beginnt bei 0, nicht bei 1.</p>
+<pre><code><span class="kw">int</span>[] zahlen = { <span class="num">3</span>, <span class="num">8</span>, <span class="num">5</span>, <span class="num">6</span> };
+Console.<span class="fn">WriteLine</span>(zahlen[<span class="num">0</span>]);
+Console.<span class="fn">WriteLine</span>(zahlen.Length);
+zahlen[<span class="num">1</span>] = <span class="num">10</span>;</code></pre>
+<table>
+  <tr><th>Ausdruck</th><th>Bedeutung</th><th>Ergebnis</th></tr>
+  <tr><td><code>zahlen[0]</code></td><td>Der erste Wert</td><td>3</td></tr>
+  <tr><td><code>zahlen[3]</code></td><td>Der letzte Wert</td><td>6</td></tr>
+  <tr><td><code>zahlen.Length</code></td><td>Anzahl der Plätze</td><td>4</td></tr>
+  <tr><td><code>zahlen[4]</code></td><td>Gibt es nicht. Das Programm bricht mit IndexOutOfRangeException ab.</td><td>Fehler</td></tr>
+</table>
+<p>Das letzte Element hat immer den Index <code>Length</code> minus 1. Im Pseudocode heißt die Länge LÄNGE(zahlen).</p>
+<h3>Eingabe und Ausgabe</h3>
+<pre><code>Console.<span class="fn">Write</span>(<span class="str">"Wie heißt du? "</span>);
+<span class="kw">string</span> eingabe = Console.<span class="fn">ReadLine</span>();
+Console.<span class="fn">WriteLine</span>(<span class="str">"Hallo "</span> + eingabe);</code></pre>
+<ul class="keypoints">
+  <li><strong>Console.WriteLine</strong><span>Gibt Text aus und springt in die nächste Zeile.</span></li>
+  <li><strong>Console.Write</strong><span>Gibt Text aus und bleibt in der Zeile.</span></li>
+  <li><strong>Console.ReadLine</strong><span>Wartet, bis der Nutzer etwas tippt und Enter drückt. Das Ergebnis ist immer ein Text.</span></li>
+</ul>
+<div class="note info">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <div class="note-content">
+    <strong>Die grüne Wellenlinie</strong>
+    Unter <code>Console.ReadLine()</code> zeigt Visual Studio manchmal eine grüne Wellenlinie. Das ist nur eine Warnung zu möglichen leeren Eingaben. Das Programm läuft trotzdem.
+  </div>
+</div>
+<div class="summary">
+  <div class="summary-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    Zusammenfassung
+  </div>
+  <div class="summary-row">
+    <span class="key">Variable</span>
+    <span class="sep"></span>
+    <span class="desc">Benannter Platz für einen Wert</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">=</span>
+    <span class="sep"></span>
+    <span class="desc">Speichern</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">==</span>
+    <span class="sep"></span>
+    <span class="desc">Vergleichen</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">%</span>
+    <span class="sep"></span>
+    <span class="desc">Rest der Division</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">&& || !</span>
+    <span class="sep"></span>
+    <span class="desc">und, oder, nicht</span>
+  </div>
+  <div class="summary-note">ReadLine liefert immer Text. Zahlen werden erst umgewandelt.</div>
+</div>
+<div class="tasks">
+  <div class="tasks-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Aufgaben
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">1</span>
+      <div class="task-text"><p>Was ergibt <code>7 / 2</code>, was <code>7 % 2</code> und was <code>7 / 2.0</code>?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Drei Ergebnisse: <code>7 / 2</code> ist <strong>3</strong>, <code>7 % 2</code> ist <strong>1</strong>, <code>7 / 2.0</code> ist <strong>3.5</strong>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">2</span>
+      <div class="task-text"><p>Was ist der Unterschied zwischen <code>=</code> und <code>==</code>?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p><code>=</code> speichert einen Wert in einer Variable. <code>==</code> vergleicht zwei Werte und ergibt wahr oder falsch.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">3</span>
+      <div class="task-text"><p>Wann ist <code>alter &gt;= 18 &amp;&amp; hatAusweis</code> wahr?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Nur wenn beides stimmt: Das Alter ist mindestens 18 und der Ausweis ist da.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">4</span>
+      <div class="task-text"><p>Welcher Datentyp passt zu 3.14, welcher zu "Hallo", welcher zu true?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p><code>double</code>, <code>string</code> und <code>bool</code>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">5</span>
+      <div class="task-text"><p>Wie prüfst du, ob <code>zahl</code> gerade ist?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p><code>zahl % 2 == 0</code>. Bleibt bei der Division durch 2 kein Rest, ist die Zahl gerade.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">6</span>
+      <div class="task-text"><p>Welchen Wert hat <code>zahlen[2]</code> im Array <code>{ 3, 8, 5, 6 }</code>, und wie greifst du auf das letzte Element zu, ohne die Länge zu kennen?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p><code>zahlen[2]</code> ist <strong>5</strong>, weil die Zählung bei 0 beginnt. Das letzte Element erreichst du mit <code>zahlen[zahlen.Length - 1]</code>.</p>
+</div>
+    </details>
+  </div>
+</div>
+</section>
+
+<section class="tab-content" id="tab-struktogramm">
+<h2 class="section-title">Struktogramm</h2>
+<p class="section-subtitle">Abläufe als Bild: Bausteine, lesen, zeichnen, in Code umsetzen.</p>
+<p>Ein Struktogramm zeigt einen Ablauf als Bild. Es besteht aus Kästen, die du von oben nach unten liest. Es gibt keine Pfeile. Programmierer zeichnen es, bevor sie Code schreiben, damit sie vorher wissen, was das Programm tun soll. Der andere Name ist Nassi Shneiderman Diagramm.</p>
+<ul class="keypoints">
+  <li><strong>Ein Kasten</strong><span>Ein Schritt. Meist eine Zeile Code.</span></li>
+  <li><strong>Von oben nach unten</strong><span>Du liest in dieser Reihenfolge.</span></li>
+  <li><strong>Ineinander</strong><span>Schleifen und Verzweigungen enthalten weitere Kästen.</span></li>
+</ul>
+<h3>Die Bausteine</h3>
+<div class="folie"><svg viewBox="0 0 760 272" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="272" rx="14" fill="#ffffff"/><text x="30.0" y="34.0" text-anchor="start" font-size="12" font-weight="700" fill="#0071e3">Anweisung</text><rect x="30.0" y="44.0" width="210.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="135.0" y="63.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">summe ← 0</text><text x="268.0" y="34.0" text-anchor="start" font-size="12" font-weight="700" fill="#0071e3">Verzweigung</text><rect x="268.0" y="44.0" width="210.0" height="48.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="268.0" y1="44.0" x2="373.0" y2="92.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="478.0" y1="44.0" x2="373.0" y2="92.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="373.0" y="61.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">a &gt; b ?</text><text x="278.0" y="86.0" text-anchor="start" font-size="10.5" font-weight="700" fill="#1e7b34">Ja</text><text x="468.0" y="86.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#c92a20">Nein</text><rect x="268.0" y="92.0" width="105.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="320.5" y="111.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">max ← a</text><rect x="373.0" y="92.0" width="105.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="425.5" y="111.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">max ← b</text><text x="506.0" y="34.0" text-anchor="start" font-size="12" font-weight="700" fill="#0071e3">Mehrfachauswahl</text><rect x="506.0" y="44.0" width="210.0" height="56.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="506.0" y1="44.0" x2="646.0" y2="100.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="716.0" y1="44.0" x2="646.0" y2="100.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="611.0" y="60.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">note</text><text x="541.0" y="95.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0071e3" stroke="#ffffff" stroke-width="3" paint-order="stroke">1</text><rect x="506.0" y="100.0" width="70.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="541.0" y="119.0" text-anchor="middle" font-size="11.693548387096774" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">sehr gut</text><text x="611.0" y="95.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0071e3" stroke="#ffffff" stroke-width="3" paint-order="stroke">2</text><rect x="576.0" y="100.0" width="70.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="611.0" y="119.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">gut</text><text x="681.0" y="95.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0071e3" stroke="#ffffff" stroke-width="3" paint-order="stroke">sonst</text><rect x="646.0" y="100.0" width="70.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="681.0" y="119.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">anders</text><text x="30.0" y="174.0" text-anchor="start" font-size="12" font-weight="700" fill="#0071e3">Zählschleife</text><rect x="30.0" y="184.0" width="210.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="135.0" y="202.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">FÜR i VON 1 BIS 5</text><rect x="30.0" y="212.0" width="22.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="52.0" y="212.0" width="188.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="146.0" y="231.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">summe ← summe + i</text><text x="268.0" y="174.0" text-anchor="start" font-size="12" font-weight="700" fill="#0071e3">Kopfgesteuert</text><rect x="268.0" y="184.0" width="210.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="373.0" y="202.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">SOLANGE kontostand &lt; 150</text><rect x="268.0" y="212.0" width="22.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="290.0" y="212.0" width="188.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="384.0" y="231.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">sparen</text><text x="506.0" y="174.0" text-anchor="start" font-size="12" font-weight="700" fill="#0071e3">Fußgesteuert</text><rect x="506.0" y="184.0" width="22.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="528.0" y="184.0" width="188.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="622.0" y="203.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">EINGABE zahl</text><rect x="506.0" y="214.0" width="210.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="611.0" y="232.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">SOLANGE zahl &lt; 1</text></svg></div>
+<table>
+  <tr><th>Baustein</th><th>Pseudocode</th><th>C#</th></tr>
+  <tr><td>Anweisung</td><td>summe ← 0</td><td><code>summe = 0;</code></td></tr>
+  <tr><td>Verzweigung</td><td>WENN, SONST</td><td><code>if</code>, <code>else</code></td></tr>
+  <tr><td>Mehrfachauswahl</td><td>FALLS</td><td><code>switch</code></td></tr>
+  <tr><td>Zählschleife</td><td>FÜR</td><td><code>for</code></td></tr>
+  <tr><td>Kopfgesteuerte Schleife</td><td>SOLANGE</td><td><code>while</code></td></tr>
+  <tr><td>Fußgesteuerte Schleife</td><td>WIEDERHOLE BIS</td><td><code>do while</code></td></tr>
+</table>
+<h3>Ein Beispiel lesen</h3>
+<p>Die Klasse bestellt Pizza. Eine Pizza kostet 8 Euro. Wer zehn oder mehr bestellt, bekommt zehn Prozent Rabatt. Wie viel muss die Klasse zahlen?</p>
+<div class="folie"><svg viewBox="0 0 760 212" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="212" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="39.0" text-anchor="middle" font-size="12" font-weight="700" fill="#0071e3">preisBerechnen</text><rect x="40.0" y="50.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="69.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">EINGABE anzahl</text><rect x="40.0" y="80.0" width="400.0" height="48.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="40.0" y1="80.0" x2="240.0" y2="128.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="440.0" y1="80.0" x2="240.0" y2="128.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="97.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">anzahl &gt;= 10 ?</text><text x="50.0" y="122.0" text-anchor="start" font-size="10.5" font-weight="700" fill="#1e7b34">Ja</text><text x="430.0" y="122.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#c92a20">Nein</text><rect x="40.0" y="128.0" width="200.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="140.0" y="147.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">preis ← anzahl * 8 * 0.9</text><rect x="240.0" y="128.0" width="200.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="340.0" y="147.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">preis ← anzahl * 8</text><rect x="40.0" y="158.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="177.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE preis</text><text x="480.0" y="40.0" text-anchor="start" font-size="12" font-weight="700" fill="#c77700">So liest du es:</text><text x="480.0" y="64.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">1. Die Anzahl Pizzen wird eingegeben.</text><text x="480.0" y="88.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">2. Sind es mindestens 10?</text><text x="480.0" y="112.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">3. Ja: Preis mit Rabatt.</text><text x="480.0" y="136.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">4. Nein: Preis ohne Rabatt.</text><text x="480.0" y="160.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">5. Der Preis wird ausgegeben.</text></svg></div>
+<div class="duo">
+  <div class="duo-col"><div class="duo-label">Pseudocode</div><pre><code><span class="kw">EINGABE</span> anzahl
+<span class="kw">WENN</span> anzahl &gt;= <span class="num">10</span> <span class="kw">DANN</span>
+    preis ← anzahl * <span class="num">8</span> * <span class="num">0.9</span>
+<span class="kw">SONST</span>
+    preis ← anzahl * <span class="num">8</span>
+<span class="kw">ENDE</span> <span class="kw">WENN</span>
+<span class="kw">AUSGABE</span> preis</code></pre></div>
+  <div class="duo-col"><div class="duo-label">C#</div><pre><code><span class="kw">int</span> anzahl = <span class="num">12</span>;
+<span class="kw">double</span> preis;
+<span class="kw">if</span> (anzahl &gt;= <span class="num">10</span>)
+{
+    preis = anzahl * <span class="num">8</span> * <span class="num">0.9</span>;
+}
+<span class="kw">else</span>
+{
+    preis = anzahl * <span class="num">8</span>;
+}
+Console.<span class="fn">WriteLine</span>(preis);</code></pre></div>
+</div>
+<h3>Vom Struktogramm zum Code</h3>
+<ul class="keypoints">
+  <li><strong>1</strong><span>Lies das Struktogramm einmal ganz durch.</span></li>
+  <li><strong>2</strong><span>Ein Kasten wird eine Zeile.</span></li>
+  <li><strong>3</strong><span>Ein Dreieck wird zu if und else. Links steht Ja, rechts steht Nein.</span></li>
+  <li><strong>4</strong><span>Eine Schleife wird zu for, foreach, while oder do while. Was im Kasten daneben steht, kommt in die geschweiften Klammern.</span></li>
+  <li><strong>5</strong><span>Eingabe und Ausgabe werden zu Console.ReadLine und Console.WriteLine.</span></li>
+</ul>
+<h3>Fehler im Struktogramm finden</h3>
+<p>Das Struktogramm soll die Summe aller positiven Zahlen einer Liste berechnen. Es enthält drei Fehler.</p>
+<div class="folie"><svg viewBox="0 0 760 180" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="180" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="400.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="38.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">FÜR JEDEN z IN zahlen</text><rect x="40.0" y="48.0" width="22.0" height="108.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="62.0" y="48.0" width="378.0" height="48.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="62.0" y1="48.0" x2="251.0" y2="96.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="440.0" y1="48.0" x2="251.0" y2="96.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="251.0" y="65.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">z &lt; 0 ?</text><text x="72.0" y="90.0" text-anchor="start" font-size="10.5" font-weight="700" fill="#1e7b34">Ja</text><text x="430.0" y="90.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#c92a20">Nein</text><rect x="62.0" y="96.0" width="189.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="156.5" y="115.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">summe ← summe + z</text><rect x="251.0" y="96.0" width="189.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="62.0" y="126.0" width="378.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="251.0" y="145.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE summe</text><text x="480.0" y="40.0" text-anchor="start" font-size="12" font-weight="700" fill="#c77700">Drei Fehler:</text><text x="480.0" y="64.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Der Startwert fehlt.</text><text x="480.0" y="88.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Die Bedingung ist falsch herum.</text><text x="480.0" y="112.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Die Ausgabe steht in der Schleife.</text></svg></div>
+<table>
+  <tr><th>Typischer Fehler</th><th>So erkennst du ihn</th></tr>
+  <tr><td>Startwert fehlt</td><td>Summe, Zähler oder Maximum werden benutzt, ohne vorher gesetzt zu sein.</td></tr>
+  <tr><td>Bedingung falsch herum</td><td>Größer statt kleiner, Ja und Nein vertauscht.</td></tr>
+  <tr><td>Ausgabe an falscher Stelle</td><td>Sie steht in der Schleife und läuft bei jedem Durchlauf.</td></tr>
+  <tr><td>Zähler wird nie verändert</td><td>Bei einer while Schleife ändert sich die Bedingung nie. Das Programm hängt.</td></tr>
+</table>
+<div class="summary">
+  <div class="summary-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    Zusammenfassung
+  </div>
+  <div class="summary-row">
+    <span class="key">Kasten</span>
+    <span class="sep"></span>
+    <span class="desc">Ein Schritt, eine Zeile Code</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">Dreieck</span>
+    <span class="sep"></span>
+    <span class="desc">Verzweigung, links Ja, rechts Nein</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">Schleife</span>
+    <span class="sep"></span>
+    <span class="desc">Der Rumpf liegt eingerückt in der Schleife</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">Lesen</span>
+    <span class="sep"></span>
+    <span class="desc">Immer von oben nach unten</span>
+  </div>
+  <div class="summary-note">Jedes Struktogramm lässt sich Kasten für Kasten in Code übersetzen.</div>
+</div>
+<div class="tasks">
+  <div class="tasks-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Aufgaben
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">1</span>
+      <div class="task-text"><p>Das Struktogramm berechnet den Preis für eine Pizzabestellung. Was wird ausgegeben bei 4 Pizzen, was bei 12?</p>
+<div class="folie"><svg viewBox="0 0 480 182" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="480" height="182" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="39.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">EINGABE anzahl</text><rect x="40.0" y="50.0" width="400.0" height="48.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="40.0" y1="50.0" x2="240.0" y2="98.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="440.0" y1="50.0" x2="240.0" y2="98.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="67.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">anzahl &gt;= 10 ?</text><text x="50.0" y="92.0" text-anchor="start" font-size="10.5" font-weight="700" fill="#1e7b34">Ja</text><text x="430.0" y="92.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#c92a20">Nein</text><rect x="40.0" y="98.0" width="200.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="140.0" y="117.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">preis ← anzahl * 8 * 0.9</text><rect x="240.0" y="98.0" width="200.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="340.0" y="117.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">preis ← anzahl * 8</text><rect x="40.0" y="128.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="147.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE preis</text></svg></div>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Bei 4 gilt Nein: 4 mal 8 ergibt <strong>32</strong>. Bei 12 gilt Ja: 12 mal 8 ist 96, mal 0,9 ergibt <strong>86,4</strong>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">2</span>
+      <div class="task-text"><p>Zeichne ein Struktogramm: Eine Zahl wird eingelesen. Ist sie negativ, wird sie auf 0 gesetzt. Danach wird sie ausgegeben.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><div class="folie"><svg viewBox="0 0 480 182" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="480" height="182" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="39.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">EINGABE zahl</text><rect x="40.0" y="50.0" width="400.0" height="48.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="40.0" y1="50.0" x2="240.0" y2="98.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="440.0" y1="50.0" x2="240.0" y2="98.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="67.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">zahl &lt; 0 ?</text><text x="50.0" y="92.0" text-anchor="start" font-size="10.5" font-weight="700" fill="#1e7b34">Ja</text><text x="430.0" y="92.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#c92a20">Nein</text><rect x="40.0" y="98.0" width="200.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="140.0" y="117.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">zahl ← 0</text><rect x="240.0" y="98.0" width="200.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="40.0" y="128.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="147.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE zahl</text></svg></div>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">3</span>
+      <div class="task-text"><p>Zeichne ein Struktogramm: Die Zahl n wird eingelesen. Gib die Summe aller Zahlen von 1 bis n aus.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><div class="folie"><svg viewBox="0 0 480 192" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="480" height="192" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="39.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">EINGABE n</text><rect x="40.0" y="50.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="69.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">summe ← 0</text><rect x="40.0" y="80.0" width="400.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="98.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">FÜR i VON 1 BIS n</text><rect x="40.0" y="108.0" width="22.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="62.0" y="108.0" width="378.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="251.0" y="127.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">summe ← summe + i</text><rect x="40.0" y="138.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="157.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE summe</text></svg></div>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">4</span>
+      <div class="task-text"><p>Finde die Fehler im Struktogramm und zeichne es richtig.</p>
+<div class="folie"><svg viewBox="0 0 480 180" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="480" height="180" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="400.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="38.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">FÜR JEDEN z IN zahlen</text><rect x="40.0" y="48.0" width="22.0" height="108.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="62.0" y="48.0" width="378.0" height="48.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="62.0" y1="48.0" x2="251.0" y2="96.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="440.0" y1="48.0" x2="251.0" y2="96.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="251.0" y="65.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">z &lt; 0 ?</text><text x="72.0" y="90.0" text-anchor="start" font-size="10.5" font-weight="700" fill="#1e7b34">Ja</text><text x="430.0" y="90.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#c92a20">Nein</text><rect x="62.0" y="96.0" width="189.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="156.5" y="115.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">summe ← summe + z</text><rect x="251.0" y="96.0" width="189.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="62.0" y="126.0" width="378.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="251.0" y="145.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE summe</text></svg></div>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Erstens fehlt <code>summe ← 0</code> vor der Schleife. Zweitens muss die Bedingung <code>z &gt; 0</code> lauten. Drittens gehört die Ausgabe hinter die Schleife.</p>
+<div class="folie"><svg viewBox="0 0 480 210" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="480" height="210" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="39.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">summe ← 0</text><rect x="40.0" y="50.0" width="400.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="68.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">FÜR JEDEN z IN zahlen</text><rect x="40.0" y="78.0" width="22.0" height="78.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="62.0" y="78.0" width="378.0" height="48.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="62.0" y1="78.0" x2="251.0" y2="126.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="440.0" y1="78.0" x2="251.0" y2="126.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="251.0" y="95.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">z &gt; 0 ?</text><text x="72.0" y="120.0" text-anchor="start" font-size="10.5" font-weight="700" fill="#1e7b34">Ja</text><text x="430.0" y="120.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#c92a20">Nein</text><rect x="62.0" y="126.0" width="189.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="156.5" y="145.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">summe ← summe + z</text><rect x="251.0" y="126.0" width="189.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="40.0" y="156.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="175.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE summe</text></svg></div>
+</div>
+    </details>
+  </div>
+</div>
+</section>
+
+<section class="tab-content" id="tab-ifelse">
+<h2 class="section-title">if else</h2>
+<p class="section-subtitle">Das Programm entscheidet: zwei und mehr Möglichkeiten.</p>
+<p>Mit if else lässt du dein Programm entscheiden. Es prüft eine Bedingung. Ist sie wahr, läuft der erste Block. Ist sie falsch, läuft der zweite, den <code>else</code> einleitet. Ein <code>else</code> ist optional.</p>
+<div class="folie"><svg viewBox="0 0 760 160" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="160" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="39.0" text-anchor="middle" font-size="12" font-weight="700" fill="#0071e3">kinoCheck</text><rect x="40.0" y="50.0" width="400.0" height="48.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="40.0" y1="50.0" x2="240.0" y2="98.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="440.0" y1="50.0" x2="240.0" y2="98.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="67.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">alter &gt;= 16 ?</text><text x="50.0" y="92.0" text-anchor="start" font-size="10.5" font-weight="700" fill="#1e7b34">Ja</text><text x="430.0" y="92.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#c92a20">Nein</text><rect x="40.0" y="98.0" width="200.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="140.0" y="117.0" text-anchor="middle" font-size="11.230585424133812" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE "Viel Spaß im Kino"</text><rect x="240.0" y="98.0" width="200.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="340.0" y="117.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE "Erst ab 16"</text><text x="480.0" y="40.0" text-anchor="start" font-size="12" font-weight="700" fill="#c77700">So liest du es:</text><text x="480.0" y="64.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Ist das Alter mindestens 16?</text><text x="480.0" y="88.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Ja: Viel Spaß im Kino.</text><text x="480.0" y="112.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Nein: Der Film ist erst ab 16.</text></svg></div>
+<div class="duo">
+  <div class="duo-col"><div class="duo-label">Pseudocode</div><pre><code><span class="kw">WENN</span> alter &gt;= <span class="num">16</span> <span class="kw">DANN</span>
+    <span class="kw">AUSGABE</span> <span class="str">"Viel Spaß im Kino"</span>
+<span class="kw">SONST</span>
+    <span class="kw">AUSGABE</span> <span class="str">"Erst ab 16"</span>
+<span class="kw">ENDE</span> <span class="kw">WENN</span></code></pre></div>
+  <div class="duo-col"><div class="duo-label">C#</div><pre><code><span class="kw">int</span> alter = <span class="num">15</span>;
+<span class="kw">if</span> (alter &gt;= <span class="num">16</span>)
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Viel Spaß im Kino"</span>);
+}
+<span class="kw">else</span>
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Erst ab 16"</span>);
+}</code></pre></div>
+</div>
+<ul class="keypoints">
+  <li><strong>Die Bedingung</strong><span>Steht in runden Klammern hinter if. Sie muss true oder false ergeben.</span></li>
+  <li><strong>Der Block</strong><span>Steht in geschweiften Klammern. Nur wenn die Bedingung stimmt, läuft er.</span></li>
+  <li><strong>else</strong><span>Läuft in allen anderen Fällen. Es hat keine eigene Bedingung.</span></li>
+</ul>
+<h3>Mehrere Möglichkeiten mit else if</h3>
+<p>Gibt es mehr als zwei Fälle, hängst du <code>else if</code> an. C# prüft von oben nach unten. Der erste Treffer gewinnt, danach wird nichts mehr geprüft.</p>
+<pre><code><span class="kw">int</span> punkte = <span class="num">82</span>;
+<span class="kw">string</span> note;
+<span class="kw">if</span> (punkte &gt;= <span class="num">90</span>)
+{
+    note = <span class="str">"sehr gut"</span>;
+}
+<span class="kw">else</span> <span class="kw">if</span> (punkte &gt;= <span class="num">75</span>)
+{
+    note = <span class="str">"gut"</span>;
+}
+<span class="kw">else</span>
+{
+    note = <span class="str">"weiter üben"</span>;
+}
+Console.<span class="fn">WriteLine</span>(note);</code></pre>
+<div class="tracer" data-steps="{&quot;vars&quot;: [&quot;punkte&quot;, &quot;note&quot;, &quot;Bedingung&quot;], &quot;steps&quot;: [{&quot;l&quot;: 0, &quot;v&quot;: {&quot;punkte&quot;: &quot;82&quot;, &quot;note&quot;: &quot;&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;punkte bekommt den Wert 82.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;punkte&quot;: &quot;82&quot;, &quot;note&quot;: &quot;&quot;, &quot;Bedingung&quot;: &quot;82 &gt;= 90 ist false&quot;}, &quot;n&quot;: &quot;Die erste Bedingung stimmt nicht. Der Block wird übersprungen.&quot;}, {&quot;l&quot;: 6, &quot;v&quot;: {&quot;punkte&quot;: &quot;82&quot;, &quot;note&quot;: &quot;&quot;, &quot;Bedingung&quot;: &quot;82 &gt;= 75 ist true&quot;}, &quot;n&quot;: &quot;Die zweite Bedingung stimmt.&quot;}, {&quot;l&quot;: 8, &quot;v&quot;: {&quot;punkte&quot;: &quot;82&quot;, &quot;note&quot;: &quot;gut&quot;, &quot;Bedingung&quot;: &quot;82 &gt;= 75 ist true&quot;}, &quot;n&quot;: &quot;Der Block läuft. note wird \&quot;gut\&quot;. Alles danach bis zum Ende der Kette wird übersprungen.&quot;}, {&quot;l&quot;: 14, &quot;v&quot;: {&quot;punkte&quot;: &quot;82&quot;, &quot;note&quot;: &quot;gut&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Ausgabe: gut.&quot;}]}">
+  <div class="tracer-head">Schritt für Schritt durchklicken</div>
+  <div class="tracer-body">
+    <pre class="tracer-code"><code><span class="tl" data-l="0">int punkte = 82;</span><span class="tl" data-l="1">string note;</span><span class="tl" data-l="2">if (punkte &gt;= 90)</span><span class="tl" data-l="3">{</span><span class="tl" data-l="4">    note = "sehr gut";</span><span class="tl" data-l="5">}</span><span class="tl" data-l="6">else if (punkte &gt;= 75)</span><span class="tl" data-l="7">{</span><span class="tl" data-l="8">    note = "gut";</span><span class="tl" data-l="9">}</span><span class="tl" data-l="10">else</span><span class="tl" data-l="11">{</span><span class="tl" data-l="12">    note = "weiter üben";</span><span class="tl" data-l="13">}</span><span class="tl" data-l="14">Console.WriteLine(note);</span></code></pre>
+    <div class="tracer-side"><div class="tracer-table"></div><div class="tracer-note"></div></div>
+  </div>
+  <div class="tracer-bar"><button type="button" class="tr-back">Zurück</button><button type="button" class="tr-next">Weiter</button><button type="button" class="tr-reset">Neu starten</button><span class="tr-count"></span></div>
+</div>
+<h3>Bedingungen verknüpfen</h3>
+<table>
+  <tr><th>Beispiel</th><th>Gilt, wenn</th></tr>
+  <tr><td><code>alter &gt;= 6 &amp;&amp; alter &lt;= 12</code></td><td>beides stimmt: Kind zwischen 6 und 12</td></tr>
+  <tr><td><code>tag == 6 || tag == 7</code></td><td>mindestens eines stimmt: Wochenende</td></tr>
+  <tr><td><code>!(alter &gt;= 18)</code></td><td>die Bedingung nicht stimmt: unter 18</td></tr>
+</table>
+<h3>if in if</h3>
+<p>Ein if darf in einem anderen stehen. Der innere Block wird nur erreicht, wenn der äußere stimmt.</p>
+<pre><code><span class="kw">int</span> alter = <span class="num">20</span>;
+<span class="kw">bool</span> hatKarte = <span class="kw">true</span>;
+<span class="kw">if</span> (alter &gt;= <span class="num">18</span>)
+{
+    <span class="kw">if</span> (hatKarte)
+    {
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Zutritt mit 10 Prozent Rabatt"</span>);
+    }
+    <span class="kw">else</span>
+    {
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Zutritt ohne Rabatt"</span>);
+    }
+}
+<span class="kw">else</span>
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Kein Zutritt"</span>);
+}</code></pre>
+<p>Oft geht es auch einfacher mit <code>&amp;&amp;</code>: <code>if (alter &gt;= 18 &amp;&amp; hatKarte)</code>. Nimm die verschachtelte Form, wenn es im Inneren eigene Fälle gibt.</p>
+<h3>Typische Fehler</h3>
+<table>
+  <tr><th>Fehler</th><th>Richtig</th></tr>
+  <tr><td><code>if (x = 5)</code></td><td><code>if (x == 5)</code>. Zwei Gleichheitszeichen vergleichen.</td></tr>
+  <tr><td><code>if (x &gt; 5);</code></td><td>Kein Semikolon hinter der Bedingung.</td></tr>
+  <tr><td><code>if (x &gt; 5) a = 1; b = 2;</code></td><td>Ohne geschweifte Klammern gehört nur die erste Zeile zum if. Setze immer Klammern.</td></tr>
+  <tr><td><code>if (note &gt;= 2 &amp;&amp; &lt;= 4)</code></td><td><code>if (note &gt;= 2 &amp;&amp; note &lt;= 4)</code>. Jede Seite braucht den vollen Vergleich.</td></tr>
+</table>
+<div class="note tip">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <div class="note-content">
+    <strong>Reihenfolge bei else if</strong>
+    Beginne mit dem strengsten Fall. Würdest du hier zuerst <code>punkte &gt;= 75</code> prüfen, käme für 95 Punkte nie »sehr gut« heraus. Die erste wahre Bedingung beendet die Kette.
+  </div>
+</div>
+<div class="summary">
+  <div class="summary-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    Zusammenfassung
+  </div>
+  <div class="summary-row">
+    <span class="key">if</span>
+    <span class="sep"></span>
+    <span class="desc">Wenn die Bedingung stimmt</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">else</span>
+    <span class="sep"></span>
+    <span class="desc">Sonst</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">else if</span>
+    <span class="sep"></span>
+    <span class="desc">Weitere Bedingung</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">&& || !</span>
+    <span class="sep"></span>
+    <span class="desc">Bedingungen verknüpfen</span>
+  </div>
+  <div class="summary-note">Von oben nach unten, der erste Treffer gewinnt.</div>
+</div>
+<div class="tasks">
+  <div class="tasks-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Aufgaben
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">1</span>
+      <div class="task-text"><p>Was gibt der Code aus? <code>int x = 7; if (x % 2 == 0) { Console.WriteLine("gerade"); } else { Console.WriteLine("ungerade"); }</code></p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><strong>ungerade</strong>, denn 7 geteilt durch 2 lässt den Rest 1.</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">2</span>
+      <div class="task-text"><p>Schreibe eine Bedingung, die wahr ist, wenn <code>zahl</code> zwischen 10 und 20 liegt, beide eingeschlossen.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p><code>zahl &gt;= 10 &amp;&amp; zahl &lt;= 20</code></p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">3</span>
+      <div class="task-text"><p>Was wird bei <code>punkte = 95</code> ausgegeben, wenn die Reihenfolge der Bedingungen im Beispiel oben <code>&gt;= 75</code> zuerst und <code>&gt;= 90</code> danach lautet?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>»gut«. Die erste Bedingung (<code>&gt;= 75</code>) stimmt schon, die zweite wird nie geprüft. Die Reihenfolge ist also wichtig.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">4</span>
+      <div class="task-text"><p>Was ist an <code>if (alter = 18)</code> falsch?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Ein Gleichheitszeichen speichert, es vergleicht nicht. Richtig ist <code>if (alter == 18)</code>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">5</span>
+      <div class="task-text"><p>Schreibe ein Programmstück, das <code>Preis</code> ausgibt: 8 Euro für Kinder unter 14, 12 Euro für alle von 14 bis 64, 9 Euro ab 65. Das Alter steht in <code>alter</code>.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">int</span> preis;
+<span class="kw">if</span> (alter &lt; <span class="num">14</span>)
+{
+    preis = <span class="num">8</span>;
+}
+<span class="kw">else</span> <span class="kw">if</span> (alter &lt; <span class="num">65</span>)
+{
+    preis = <span class="num">12</span>;
+}
+<span class="kw">else</span>
+{
+    preis = <span class="num">9</span>;
+}
+Console.<span class="fn">WriteLine</span>(preis);</code></pre>
+</div>
+    </details>
+  </div>
+</div>
+</section>
+
+<section class="tab-content" id="tab-switch">
+<h2 class="section-title">switch case</h2>
+<p class="section-subtitle">Einen Wert mit festen Möglichkeiten vergleichen.</p>
+<p>Mit switch vergleichst du einen Wert mit mehreren festen Möglichkeiten. Es ist eine übersichtliche Alternative zu einer langen Kette aus else if, wenn immer dieselbe Variable auf Gleichheit geprüft wird.</p>
+<div class="folie"><svg viewBox="0 0 760 160" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="160" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="440.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="260.0" y="39.0" text-anchor="middle" font-size="12" font-weight="700" fill="#0071e3">wochentag</text><rect x="40.0" y="50.0" width="440.0" height="56.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="40.0" y1="50.0" x2="333.3" y2="106.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="480.0" y1="50.0" x2="333.3" y2="106.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="260.0" y="66.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">tag</text><text x="113.3" y="101.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0071e3" stroke="#ffffff" stroke-width="3" paint-order="stroke">1 bis 5</text><rect x="40.0" y="106.0" width="146.7" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="113.3" y="125.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">"Arbeitstag"</text><text x="260.0" y="101.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0071e3" stroke="#ffffff" stroke-width="3" paint-order="stroke">6, 7</text><rect x="186.7" y="106.0" width="146.7" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="260.0" y="125.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">"Wochenende"</text><text x="406.7" y="101.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0071e3" stroke="#ffffff" stroke-width="3" paint-order="stroke">sonst</text><rect x="333.3" y="106.0" width="146.7" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="406.7" y="125.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">"ungültig"</text><text x="520.0" y="40.0" text-anchor="start" font-size="12" font-weight="700" fill="#c77700">So liest du es:</text><text x="520.0" y="64.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Der Wert von tag entscheidet,</text><text x="520.0" y="88.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">welcher Zweig läuft.</text><text x="520.0" y="112.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Alles andere landet bei sonst.</text></svg></div>
+<div class="duo">
+  <div class="duo-col"><div class="duo-label">Pseudocode</div><pre><code><span class="kw">FALLS</span> tag
+    <span class="num">1</span> <span class="kw">BIS</span> <span class="num">5</span>: <span class="kw">AUSGABE</span> <span class="str">"Arbeitstag"</span>
+    <span class="num">6</span>, <span class="num">7</span>:    <span class="kw">AUSGABE</span> <span class="str">"Wochenende"</span>
+    <span class="kw">SONST</span>:   <span class="kw">AUSGABE</span> <span class="str">"Ungültiger Tag"</span>
+<span class="kw">ENDE</span> <span class="kw">FALLS</span></code></pre></div>
+  <div class="duo-col"><div class="duo-label">C#</div><pre><code><span class="kw">int</span> tag = <span class="num">6</span>;
+<span class="kw">switch</span> (tag)
+{
+    <span class="kw">case</span> <span class="num">1</span>:
+    <span class="kw">case</span> <span class="num">2</span>:
+    <span class="kw">case</span> <span class="num">3</span>:
+    <span class="kw">case</span> <span class="num">4</span>:
+    <span class="kw">case</span> <span class="num">5</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Arbeitstag"</span>);
+        <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="num">6</span>:
+    <span class="kw">case</span> <span class="num">7</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Wochenende"</span>);
+        <span class="kw">break</span>;
+    <span class="kw">default</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Ungültiger Tag"</span>);
+        <span class="kw">break</span>;
+}</code></pre></div>
+</div>
+<ul class="keypoints">
+  <li><strong>switch (tag)</strong><span>Der Wert in der Klammer wird mit den Fällen verglichen.</span></li>
+  <li><strong>case 6:</strong><span>Ein möglicher Wert. Der Doppelpunkt gehört dazu.</span></li>
+  <li><strong>break;</strong><span>Beendet den Fall. Ohne break gibt C# eine Fehlermeldung aus.</span></li>
+  <li><strong>default:</strong><span>Läuft, wenn kein Fall gepasst hat. Wie das else bei if.</span></li>
+  <li><strong>Mehrere Fälle</strong><span>Stehen case Zeilen direkt untereinander, teilen sie sich denselben Code.</span></li>
+</ul>
+<div class="tracer" data-steps="{&quot;vars&quot;: [&quot;tag&quot;, &quot;Ausgabe&quot;], &quot;steps&quot;: [{&quot;l&quot;: 0, &quot;v&quot;: {&quot;tag&quot;: &quot;6&quot;, &quot;Ausgabe&quot;: &quot;&quot;}, &quot;n&quot;: &quot;tag bekommt den Wert 6.&quot;}, {&quot;l&quot;: 1, &quot;v&quot;: {&quot;tag&quot;: &quot;6&quot;, &quot;Ausgabe&quot;: &quot;&quot;}, &quot;n&quot;: &quot;switch schaut auf tag und sucht einen passenden Fall.&quot;}, {&quot;l&quot;: 10, &quot;v&quot;: {&quot;tag&quot;: &quot;6&quot;, &quot;Ausgabe&quot;: &quot;&quot;}, &quot;n&quot;: &quot;case 6 passt. C# springt direkt dorthin. Die Fälle 1 bis 5 werden nicht geprüft.&quot;}, {&quot;l&quot;: 12, &quot;v&quot;: {&quot;tag&quot;: &quot;6&quot;, &quot;Ausgabe&quot;: &quot;Wochenende&quot;}, &quot;n&quot;: &quot;Der Code des Falls läuft. Ausgabe: Wochenende.&quot;}, {&quot;l&quot;: 13, &quot;v&quot;: {&quot;tag&quot;: &quot;6&quot;, &quot;Ausgabe&quot;: &quot;Wochenende&quot;}, &quot;n&quot;: &quot;break beendet das switch. Das default wird übersprungen.&quot;}]}">
+  <div class="tracer-head">Schritt für Schritt durchklicken</div>
+  <div class="tracer-body">
+    <pre class="tracer-code"><code><span class="tl" data-l="0">int tag = 6;</span><span class="tl" data-l="1">switch (tag)</span><span class="tl" data-l="2">{</span><span class="tl" data-l="3">    case 1:</span><span class="tl" data-l="4">    case 2:</span><span class="tl" data-l="5">    case 3:</span><span class="tl" data-l="6">    case 4:</span><span class="tl" data-l="7">    case 5:</span><span class="tl" data-l="8">        Console.WriteLine("Arbeitstag");</span><span class="tl" data-l="9">        break;</span><span class="tl" data-l="10">    case 6:</span><span class="tl" data-l="11">    case 7:</span><span class="tl" data-l="12">        Console.WriteLine("Wochenende");</span><span class="tl" data-l="13">        break;</span><span class="tl" data-l="14">    default:</span><span class="tl" data-l="15">        Console.WriteLine("Ungültiger Tag");</span><span class="tl" data-l="16">        break;</span><span class="tl" data-l="17">}</span></code></pre>
+    <div class="tracer-side"><div class="tracer-table"></div><div class="tracer-note"></div></div>
+  </div>
+  <div class="tracer-bar"><button type="button" class="tr-back">Zurück</button><button type="button" class="tr-next">Weiter</button><button type="button" class="tr-reset">Neu starten</button><span class="tr-count"></span></div>
+</div>
+<h3>switch mit Text</h3>
+<pre><code><span class="kw">string</span> farbe = <span class="str">"rot"</span>;
+<span class="kw">switch</span> (farbe)
+{
+    <span class="kw">case</span> <span class="str">"rot"</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Stopp"</span>);
+        <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="str">"gelb"</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Achtung"</span>);
+        <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="str">"gruen"</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Fahren"</span>);
+        <span class="kw">break</span>;
+    <span class="kw">default</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Unbekannte Farbe"</span>);
+        <span class="kw">break</span>;
+}</code></pre>
+<h3>switch oder if else?</h3>
+<table>
+  <tr><th></th><th>switch</th><th>if else</th></tr>
+  <tr><td>Passt, wenn</td><td>Ein Wert wird mit festen Möglichkeiten verglichen</td><td>Bereiche oder zusammengesetzte Bedingungen</td></tr>
+  <tr><td>Beispiel</td><td>Wochentag, Menüpunkt, Farbe</td><td>Alter ab 18, Punkte über 75</td></tr>
+  <tr><td>Pseudocode</td><td>FALLS</td><td>WENN</td></tr>
+</table>
+<div class="note warn">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+  <div class="note-content">
+    <strong>Bereiche gehen nicht</strong>
+    Mit <code>case 90</code> prüfst du nur genau 90. Für »ab 90 Punkten« nimmst du if else. In neueren C# Versionen gibt es dafür eigene Schreibweisen, die sind hier nicht nötig.
+  </div>
+</div>
+<div class="summary">
+  <div class="summary-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    Zusammenfassung
+  </div>
+  <div class="summary-row">
+    <span class="key">switch</span>
+    <span class="sep"></span>
+    <span class="desc">Wert mit festen Möglichkeiten vergleichen</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">case</span>
+    <span class="sep"></span>
+    <span class="desc">Eine Möglichkeit</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">break</span>
+    <span class="sep"></span>
+    <span class="desc">Fall beenden, Pflicht</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">default</span>
+    <span class="sep"></span>
+    <span class="desc">Wenn nichts passt</span>
+  </div>
+  <div class="summary-note">Jeder Fall endet mit break.</div>
+</div>
+<div class="tasks">
+  <div class="tasks-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Aufgaben
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">1</span>
+      <div class="task-text"><p>Was gibt der Code oben mit <code>tag = 3</code> aus, was mit <code>tag = 9</code>?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Bei 3: <strong>Arbeitstag</strong>. Bei 9 greift default: <strong>Ungültiger Tag</strong>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">2</span>
+      <div class="task-text"><p>Was passiert, wenn du bei einem Fall das <code>break;</code> vergisst?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>C# meldet einen Fehler beim Übersetzen. Anders als in manchen anderen Sprachen läuft der Code nicht in den nächsten Fall weiter.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">3</span>
+      <div class="task-text"><p>Schreibe ein switch für <code>menue</code>. 1 gibt »Neu«, 2 gibt »Öffnen«, 3 gibt »Beenden« aus, alles andere »Unbekannt«.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">switch</span> (menue)
+{
+    <span class="kw">case</span> <span class="num">1</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Neu"</span>);
+        <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="num">2</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Öffnen"</span>);
+        <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="num">3</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Beenden"</span>);
+        <span class="kw">break</span>;
+    <span class="kw">default</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Unbekannt"</span>);
+        <span class="kw">break</span>;
+}</code></pre>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">4</span>
+      <div class="task-text"><p>Für »ab 75 Punkten gut«: switch oder if else?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>if else. Es ist ein Bereich, kein fester Wert.</p>
+</div>
+    </details>
+  </div>
+</div>
+</section>
+
+<section class="tab-content" id="tab-schleifen">
+<h2 class="section-title">Schleifen im Überblick</h2>
+<p class="section-subtitle">Wozu Schleifen, welche Arten es gibt und was kopf und fußgesteuert heißt.</p>
+<p>Stell dir vor, du sollst »Hallo« hundertmal ausgeben. Du könntest hundert Zeilen tippen. Mit einer Schleife schreibst du es einmal und sagst dem Programm, wie oft es laufen soll.</p>
+<pre><code><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">0</span>; i &lt; <span class="num">100</span>; i++)
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Hallo"</span>);
+}</code></pre>
+<h3>Jede Schleife besteht aus drei Dingen</h3>
+<ul class="keypoints">
+  <li><strong>Startwert</strong><span>Womit beginnt die Schleife? Zum Beispiel <code>int i = 0;</code></span></li>
+  <li><strong>Bedingung</strong><span>Wann läuft sie weiter? Solange sie wahr ist, wird wiederholt.</span></li>
+  <li><strong>Veränderung</strong><span>Etwas muss sich ändern, sonst endet sie nie. Zum Beispiel <code>i++</code>.</span></li>
+</ul>
+<h3>Die vier Schleifen in C#</h3>
+<table>
+  <tr><th>Schleife</th><th>Pseudocode</th><th>Wann</th></tr>
+  <tr><td><code>while</code></td><td>SOLANGE</td><td>Du weißt nicht, wie oft. Die Bedingung wird vor jedem Durchlauf geprüft.</td></tr>
+  <tr><td><code>do while</code></td><td>WIEDERHOLE BIS</td><td>Der Block läuft mindestens einmal. Die Bedingung wird nach dem Durchlauf geprüft.</td></tr>
+  <tr><td><code>for</code></td><td>FÜR</td><td>Du weißt, wie oft. Es gibt einen Zähler.</td></tr>
+  <tr><td><code>foreach</code></td><td>FÜR JEDEN</td><td>Du gehst jedes Element einer Liste durch.</td></tr>
+</table>
+<h3>Kopfgesteuert und fußgesteuert</h3>
+<p>Entscheidend ist, wo die Bedingung geprüft wird. Danach heißen die Schleifen:</p>
+<div class="folie"><svg viewBox="0 0 760 132" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="132" rx="14" fill="#ffffff"/><text x="30.0" y="34.0" text-anchor="start" font-size="12" font-weight="700" fill="#0071e3">Kopfgesteuert: while</text><rect x="30.0" y="44.0" width="210.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="135.0" y="62.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">SOLANGE bedingung</text><rect x="30.0" y="72.0" width="22.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="52.0" y="72.0" width="188.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="146.0" y="91.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">Anweisung</text><text x="268.0" y="34.0" text-anchor="start" font-size="12" font-weight="700" fill="#0071e3">Fußgesteuert: do while</text><rect x="268.0" y="44.0" width="22.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="290.0" y="44.0" width="188.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="384.0" y="63.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">Anweisung</text><rect x="268.0" y="74.0" width="210.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="373.0" y="92.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">SOLANGE bedingung</text><text x="506.0" y="34.0" text-anchor="start" font-size="12" font-weight="700" fill="#0071e3">Zählschleife: for</text><rect x="506.0" y="44.0" width="210.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="611.0" y="62.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">FÜR i VON 1 BIS 5</text><rect x="506.0" y="72.0" width="22.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="528.0" y="72.0" width="188.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="622.0" y="91.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">Anweisung</text></svg></div>
+<table>
+  <tr><th></th><th>Kopfgesteuert</th><th>Fußgesteuert</th></tr>
+  <tr><td>Bedingung steht</td><td>Oben, vor dem Block</td><td>Unten, nach dem Block</td></tr>
+  <tr><td>Block läuft mindestens</td><td>Nullmal. Ist die Bedingung gleich falsch, läuft nichts.</td><td>Einmal. Der Block läuft immer zuerst.</td></tr>
+  <tr><td>C#</td><td><code>while</code> und <code>for</code></td><td><code>do while</code></td></tr>
+  <tr><td>Typisch für</td><td>Zählen, Suchen, Warten auf ein Ereignis</td><td>Eingabe prüfen und wiederholen</td></tr>
+</table>
+<div class="merkbild"><span class="merkbild-label">Merkbild</span>Kopfgesteuert prüft erst und läuft dann. Fußgesteuert läuft erst und prüft dann.</div>
+<div class="note warn">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+  <div class="note-content">
+    <strong>WIEDERHOLE BIS ist umgekehrt</strong>
+    Im Pseudocode endet WIEDERHOLE BIS, wenn die Bedingung wahr wird. In C# läuft do while weiter, solange die Bedingung wahr ist. Wer Pseudocode in C# umsetzt, dreht die Bedingung also um. Aus BIS zahl >= 1 wird <code>while (zahl &lt; 1)</code>.
+  </div>
+</div>
+<h3>Endlosschleife</h3>
+<p>Wird die Bedingung nie falsch, hört die Schleife nie auf. Das Programm hängt. Meist fehlt die Veränderung, zum Beispiel <code>i++</code>. Mit Strg und C beendest du das Programm in der Konsole.</p>
+<pre><code><span class="kw">int</span> i = <span class="num">0</span>;
+<span class="kw">while</span> (i &lt; <span class="num">5</span>)
+{
+    Console.<span class="fn">WriteLine</span>(i);
+}</code></pre>
+<p>Hier bleibt <code>i</code> immer 0. Die Bedingung ist immer wahr.</p>
+<div class="summary">
+  <div class="summary-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    Zusammenfassung
+  </div>
+  <div class="summary-row">
+    <span class="key">while</span>
+    <span class="sep"></span>
+    <span class="desc">Prüft vor dem Block</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">do while</span>
+    <span class="sep"></span>
+    <span class="desc">Prüft nach dem Block</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">for</span>
+    <span class="sep"></span>
+    <span class="desc">Mit Zähler, feste Anzahl</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">foreach</span>
+    <span class="sep"></span>
+    <span class="desc">Jedes Element einer Liste</span>
+  </div>
+  <div class="summary-note">Jede Schleife braucht einen Startwert, eine Bedingung und eine Veränderung.</div>
+</div>
+<div class="tasks">
+  <div class="tasks-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Aufgaben
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">1</span>
+      <div class="task-text"><p>Welche Schleife läuft mindestens einmal?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p><code>do while</code>. Die Bedingung steht unten und wird erst nach dem ersten Durchlauf geprüft.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">2</span>
+      <div class="task-text"><p>Eine Schleife soll 10 Mal laufen, die Anzahl steht fest. Welche nimmst du?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p><code>for</code>. Du weißt die Anzahl und brauchst einen Zähler.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">3</span>
+      <div class="task-text"><p>Warum hängt dieses Programm? <code>int i = 0; while (i &lt; 5) { Console.WriteLine(i); }</code></p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Die Variable <code>i</code> ändert sich nie. <code>i &lt; 5</code> bleibt immer wahr. Es fehlt <code>i++;</code> im Block.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">4</span>
+      <div class="task-text"><p>Wandle um: Pseudocode WIEDERHOLE ... BIS zahl > 0. Wie lautet die Bedingung hinter <code>do { } while</code>?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p><code>while (zahl &lt;= 0);</code>. Die Bedingung wird umgedreht, weil do while weiterläuft, solange sie stimmt.</p>
+</div>
+    </details>
+  </div>
+</div>
+</section>
+
+<section class="tab-content" id="tab-while">
+<h2 class="section-title">while</h2>
+<p class="section-subtitle">Die kopfgesteuerte Schleife: erst prüfen, dann laufen.</p>
+<p>Die while Schleife prüft die Bedingung vor jedem Durchlauf. Stimmt sie, läuft der Block. Danach wird wieder geprüft. Sie ist kopfgesteuert. Du nutzt sie, wenn du nicht vorher weißt, wie oft etwas wiederholt wird.</p>
+<p>Beispiel: Du sparst auf ein neues Handy. Es kostet 150 Euro. Du hast schon 100 Euro und legst jeden Monat 20 Euro zurück. Nach wie vielen Monaten kannst du es kaufen?</p>
+<div class="folie"><svg viewBox="0 0 760 252" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="252" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="420.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="250.0" y="39.0" text-anchor="middle" font-size="12" font-weight="700" fill="#0071e3">sparen</text><rect x="40.0" y="50.0" width="420.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="250.0" y="69.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">kontostand ← 100</text><rect x="40.0" y="80.0" width="420.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="250.0" y="99.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">monate ← 0</text><rect x="40.0" y="110.0" width="420.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="250.0" y="128.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">SOLANGE kontostand &lt; 150</text><rect x="40.0" y="138.0" width="22.0" height="60.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="62.0" y="138.0" width="398.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="261.0" y="157.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">kontostand ← kontostand + 20</text><rect x="62.0" y="168.0" width="398.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="261.0" y="187.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">monate ← monate + 1</text><rect x="40.0" y="198.0" width="420.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="250.0" y="217.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE monate</text><text x="500.0" y="40.0" text-anchor="start" font-size="12" font-weight="700" fill="#c77700">So liest du es:</text><text x="500.0" y="64.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Konto startet bei 100.</text><text x="500.0" y="88.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Solange das Konto unter 150 liegt:</text><text x="500.0" y="112.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">zwanzig Euro dazu, ein Monat mehr.</text><text x="500.0" y="136.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Danach wird die Zahl der Monate gezeigt.</text></svg></div>
+<div class="duo">
+  <div class="duo-col"><div class="duo-label">Pseudocode</div><pre><code>kontostand ← <span class="num">100</span>
+monate ← <span class="num">0</span>
+<span class="kw">SOLANGE</span> kontostand &lt; <span class="num">150</span>
+    kontostand ← kontostand + <span class="num">20</span>
+    monate ← monate + <span class="num">1</span>
+<span class="kw">ENDE</span> <span class="kw">SOLANGE</span>
+<span class="kw">AUSGABE</span> monate</code></pre></div>
+  <div class="duo-col"><div class="duo-label">C#</div><pre><code><span class="kw">int</span> kontostand = <span class="num">100</span>;
+<span class="kw">int</span> monate = <span class="num">0</span>;
+<span class="kw">while</span> (kontostand &lt; <span class="num">150</span>)
+{
+    kontostand = kontostand + <span class="num">20</span>;
+    monate = monate + <span class="num">1</span>;
+}
+Console.<span class="fn">WriteLine</span>(monate);</code></pre></div>
+</div>
+<h3>Schritt für Schritt durchklicken</h3>
+<p>Klicke dich durch. Rechts siehst du, wie sich die Werte nach jeder Zeile verändern.</p>
+<div class="tracer" data-steps="{&quot;vars&quot;: [&quot;kontostand&quot;, &quot;monate&quot;, &quot;Bedingung&quot;], &quot;steps&quot;: [{&quot;l&quot;: 0, &quot;v&quot;: {&quot;kontostand&quot;: &quot;100&quot;, &quot;monate&quot;: &quot;?&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Das Konto startet bei 100.&quot;}, {&quot;l&quot;: 1, &quot;v&quot;: {&quot;kontostand&quot;: &quot;100&quot;, &quot;monate&quot;: &quot;0&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Der Zähler monate startet bei 0.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;kontostand&quot;: &quot;100&quot;, &quot;monate&quot;: &quot;0&quot;, &quot;Bedingung&quot;: &quot;100 &lt; 150 ist true&quot;}, &quot;n&quot;: &quot;Die Bedingung wird zuerst geprüft. Sie stimmt, also läuft der Block.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;kontostand&quot;: &quot;120&quot;, &quot;monate&quot;: &quot;0&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Runde 1: 20 Euro kommen dazu.&quot;}, {&quot;l&quot;: 5, &quot;v&quot;: {&quot;kontostand&quot;: &quot;120&quot;, &quot;monate&quot;: &quot;1&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Ein Monat ist vergangen. Danach springt der Ablauf zurück zur Bedingung.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;kontostand&quot;: &quot;120&quot;, &quot;monate&quot;: &quot;1&quot;, &quot;Bedingung&quot;: &quot;120 &lt; 150 ist true&quot;}, &quot;n&quot;: &quot;Die Bedingung wird zuerst geprüft. Sie stimmt, also läuft der Block.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;kontostand&quot;: &quot;140&quot;, &quot;monate&quot;: &quot;1&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Runde 2: 20 Euro kommen dazu.&quot;}, {&quot;l&quot;: 5, &quot;v&quot;: {&quot;kontostand&quot;: &quot;140&quot;, &quot;monate&quot;: &quot;2&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Ein Monat ist vergangen. Danach springt der Ablauf zurück zur Bedingung.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;kontostand&quot;: &quot;140&quot;, &quot;monate&quot;: &quot;2&quot;, &quot;Bedingung&quot;: &quot;140 &lt; 150 ist true&quot;}, &quot;n&quot;: &quot;Die Bedingung wird zuerst geprüft. Sie stimmt, also läuft der Block.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;kontostand&quot;: &quot;160&quot;, &quot;monate&quot;: &quot;2&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Runde 3: 20 Euro kommen dazu.&quot;}, {&quot;l&quot;: 5, &quot;v&quot;: {&quot;kontostand&quot;: &quot;160&quot;, &quot;monate&quot;: &quot;3&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Ein Monat ist vergangen. Danach springt der Ablauf zurück zur Bedingung.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;kontostand&quot;: &quot;160&quot;, &quot;monate&quot;: &quot;3&quot;, &quot;Bedingung&quot;: &quot;160 &lt; 150 ist false&quot;}, &quot;n&quot;: &quot;Die Bedingung stimmt nicht mehr. Die Schleife ist zu Ende.&quot;}, {&quot;l&quot;: 7, &quot;v&quot;: {&quot;kontostand&quot;: &quot;160&quot;, &quot;monate&quot;: &quot;3&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Ausgabe: 3.&quot;}]}">
+  <div class="tracer-head">Schritt für Schritt durchklicken</div>
+  <div class="tracer-body">
+    <pre class="tracer-code"><code><span class="tl" data-l="0">int kontostand = 100;</span><span class="tl" data-l="1">int monate = 0;</span><span class="tl" data-l="2">while (kontostand &lt; 150)</span><span class="tl" data-l="3">{</span><span class="tl" data-l="4">    kontostand = kontostand + 20;</span><span class="tl" data-l="5">    monate = monate + 1;</span><span class="tl" data-l="6">}</span><span class="tl" data-l="7">Console.WriteLine(monate);</span></code></pre>
+    <div class="tracer-side"><div class="tracer-table"></div><div class="tracer-note"></div></div>
+  </div>
+  <div class="tracer-bar"><button type="button" class="tr-back">Zurück</button><button type="button" class="tr-next">Weiter</button><button type="button" class="tr-reset">Neu starten</button><span class="tr-count"></span></div>
+</div>
+<ul class="keypoints">
+  <li><strong>Prüfen zuerst</strong><span>Auch beim ersten Mal. Stimmt die Bedingung gleich nicht, läuft der Block kein einziges Mal.</span></li>
+  <li><strong>Etwas muss sich ändern</strong><span>Im Block muss eine Variable verändert werden, die in der Bedingung steht.</span></li>
+  <li><strong>Danach geht es weiter</strong><span>Ist die Bedingung falsch, springt das Programm hinter die Klammer.</span></li>
+</ul>
+<div class="note tip">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <div class="note-content">
+    <strong>Die zwei Fragen</strong>
+    Frage dich bei jeder while Schleife: Was prüft die Bedingung? Und wo im Block verändere ich genau das? Fehlt die Antwort auf die zweite Frage, hast du eine Endlosschleife.
+  </div>
+</div>
+<h3>Noch ein Beispiel: Verdoppeln</h3>
+<p>Eine Bakterienkultur verdoppelt sich jede Stunde. Sie startet mit einem Bakterium. Wann sind es mehr als 1000?</p>
+<pre><code><span class="kw">int</span> bakterien = <span class="num">1</span>;
+<span class="kw">int</span> stunden = <span class="num">0</span>;
+<span class="kw">while</span> (bakterien &lt;= <span class="num">1000</span>)
+{
+    bakterien = bakterien * <span class="num">2</span>;
+    stunden++;
+}
+Console.<span class="fn">WriteLine</span>(stunden + <span class="str">" Stunden, "</span> + bakterien + <span class="str">" Bakterien"</span>);</code></pre>
+<p>Nach 10 Stunden sind es 1024 Bakterien. Die Schleife läuft genau zehnmal.</p>
+<div class="summary">
+  <div class="summary-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    Zusammenfassung
+  </div>
+  <div class="summary-row">
+    <span class="key">Aufbau</span>
+    <span class="sep"></span>
+    <span class="desc">while (Bedingung) { Block }</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">Prüfung</span>
+    <span class="sep"></span>
+    <span class="desc">Vor jedem Durchlauf</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">Mindestens</span>
+    <span class="sep"></span>
+    <span class="desc">Nullmal</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">Wichtig</span>
+    <span class="sep"></span>
+    <span class="desc">Im Block die Bedingungsvariable verändern</span>
+  </div>
+  <div class="summary-note">Nutze while, wenn du nicht weißt, wie oft die Schleife läuft.</div>
+</div>
+<div class="tasks">
+  <div class="tasks-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Aufgaben
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">1</span>
+      <div class="task-text"><p>Wie oft läuft <code>int x = 20; while (x &gt; 3) { x = x / 2; }</code>? Welchen Wert hat x am Ende?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>x wird 10, dann 5, dann 2. Danach gilt <code>2 &gt; 3</code> nicht mehr. Die Schleife läuft <strong>dreimal</strong>, x ist <strong>2</strong>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">2</span>
+      <div class="task-text"><p>Wie oft läuft <code>int a = 10; while (a &lt; 5) { a++; }</code>?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><strong>Nullmal</strong>. Die Bedingung ist schon am Anfang falsch.</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">3</span>
+      <div class="task-text"><p>Schreibe eine Schleife, die alle Zahlen von 1 bis 5 ausgibt, mit while.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">int</span> i = <span class="num">1</span>;
+<span class="kw">while</span> (i &lt;= <span class="num">5</span>)
+{
+    Console.<span class="fn">WriteLine</span>(i);
+    i++;
+}</code></pre>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">4</span>
+      <div class="task-text"><p>Du hast 1000 Euro. Jedes Jahr kommen 5 Prozent dazu. Schreibe eine Schleife, die zählt, nach wie vielen Jahren es mindestens 1500 Euro sind.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">double</span> geld = <span class="num">1000</span>;
+<span class="kw">int</span> jahre = <span class="num">0</span>;
+<span class="kw">while</span> (geld &lt; <span class="num">1500</span>)
+{
+    geld = geld * <span class="num">1.05</span>;
+    jahre++;
+}
+Console.<span class="fn">WriteLine</span>(jahre);</code></pre>
+<p>Es sind <strong>9 Jahre</strong>.</p>
+</div>
+    </details>
+  </div>
+</div>
+</section>
+
+<section class="tab-content" id="tab-dowhile">
+<h2 class="section-title">do while</h2>
+<p class="section-subtitle">Die fußgesteuerte Schleife: erst laufen, dann prüfen.</p>
+<p>Die do while Schleife führt den Block aus und prüft die Bedingung erst danach. Sie ist fußgesteuert. Der Block läuft deshalb mindestens einmal. Typisch ist eine Eingabe, die so lange wiederholt wird, bis sie passt.</p>
+<div class="folie"><svg viewBox="0 0 760 184" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="184" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="420.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="250.0" y="39.0" text-anchor="middle" font-size="12" font-weight="700" fill="#0071e3">zahlAbfragen</text><rect x="40.0" y="50.0" width="22.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="62.0" y="50.0" width="398.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="261.0" y="69.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">EINGABE zahl</text><rect x="40.0" y="80.0" width="420.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="250.0" y="98.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">SOLANGE zahl &lt; 1 ODER zahl &gt; 10</text><rect x="40.0" y="108.0" width="420.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="250.0" y="127.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE zahl</text><text x="500.0" y="40.0" text-anchor="start" font-size="12" font-weight="700" fill="#c77700">So liest du es:</text><text x="500.0" y="64.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Zuerst wird eine Zahl eingegeben.</text><text x="500.0" y="88.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Dann wird geprüft: Ist sie zu klein</text><text x="500.0" y="112.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">oder zu groß? Dann nochmal.</text><text x="500.0" y="136.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Sonst geht es weiter.</text></svg></div>
+<div class="duo">
+  <div class="duo-col"><div class="duo-label">Pseudocode</div><pre><code><span class="kw">WIEDERHOLE</span>
+    <span class="kw">EINGABE</span> zahl
+<span class="kw">BIS</span> zahl &gt;= <span class="num">1</span> <span class="kw">UND</span> zahl &lt;= <span class="num">10</span>
+<span class="kw">AUSGABE</span> <span class="str">"Danke"</span></code></pre></div>
+  <div class="duo-col"><div class="duo-label">C#</div><pre><code><span class="kw">int</span> zahl;
+<span class="kw">do</span>
+{
+    Console.<span class="fn">Write</span>(<span class="str">"Zahl von 1 bis 10: "</span>);
+    zahl = <span class="kw">int</span>.<span class="fn">Parse</span>(Console.<span class="fn">ReadLine</span>());
+}
+<span class="kw">while</span> (zahl &lt; <span class="num">1</span> || zahl &gt; <span class="num">10</span>);
+Console.<span class="fn">WriteLine</span>(<span class="str">"Danke"</span>);</code></pre></div>
+</div>
+<div class="note warn">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4M12 17h.01"/></svg>
+  <div class="note-content">
+    <strong>Bedingung umdrehen</strong>
+    Im Pseudocode steht, wann die Schleife endet: BIS zahl >= 1 UND zahl <= 10. In C# steht, wann sie weiterläuft: <code>while (zahl &lt; 1 || zahl &gt; 10)</code>. Das ist genau das Gegenteil. Aus UND wird dabei ODER.
+  </div>
+</div>
+<h3>Durchklicken mit den Eingaben 15, 0 und 7</h3>
+<div class="tracer" data-steps="{&quot;vars&quot;: [&quot;zahl&quot;, &quot;Bedingung&quot;], &quot;steps&quot;: [{&quot;l&quot;: 0, &quot;v&quot;: {&quot;zahl&quot;: &quot;?&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;zahl ist angelegt, hat aber noch keinen Wert.&quot;}, {&quot;l&quot;: 1, &quot;v&quot;: {&quot;zahl&quot;: &quot;?&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Bei do while läuft der Block immer zuerst. Die Bedingung wird erst danach geprüft.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;zahl&quot;: &quot;15&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Eingabe 1: Der Nutzer tippt 15.&quot;}, {&quot;l&quot;: 6, &quot;v&quot;: {&quot;zahl&quot;: &quot;15&quot;, &quot;Bedingung&quot;: &quot;true, nochmal&quot;}, &quot;n&quot;: &quot;Die Zahl liegt außerhalb von 1 bis 10. Die Bedingung ist wahr, der Block läuft nochmal.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;zahl&quot;: &quot;0&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Eingabe 2: Der Nutzer tippt 0.&quot;}, {&quot;l&quot;: 6, &quot;v&quot;: {&quot;zahl&quot;: &quot;0&quot;, &quot;Bedingung&quot;: &quot;true, nochmal&quot;}, &quot;n&quot;: &quot;Die Zahl liegt außerhalb von 1 bis 10. Die Bedingung ist wahr, der Block läuft nochmal.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;zahl&quot;: &quot;7&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Eingabe 3: Der Nutzer tippt 7.&quot;}, {&quot;l&quot;: 6, &quot;v&quot;: {&quot;zahl&quot;: &quot;7&quot;, &quot;Bedingung&quot;: &quot;false, fertig&quot;}, &quot;n&quot;: &quot;Die Zahl passt. Die Bedingung ist falsch, die Schleife endet.&quot;}, {&quot;l&quot;: 7, &quot;v&quot;: {&quot;zahl&quot;: &quot;7&quot;, &quot;Bedingung&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Ausgabe: Danke, du hast 7 eingegeben.&quot;}]}">
+  <div class="tracer-head">Schritt für Schritt durchklicken</div>
+  <div class="tracer-body">
+    <pre class="tracer-code"><code><span class="tl" data-l="0">int zahl;</span><span class="tl" data-l="1">do</span><span class="tl" data-l="2">{</span><span class="tl" data-l="3">    Console.Write("Zahl von 1 bis 10: ");</span><span class="tl" data-l="4">    zahl = int.Parse(Console.ReadLine());</span><span class="tl" data-l="5">}</span><span class="tl" data-l="6">while (zahl &lt; 1 || zahl &gt; 10);</span><span class="tl" data-l="7">Console.WriteLine("Danke, du hast " + zahl + " eingegeben.");</span></code></pre>
+    <div class="tracer-side"><div class="tracer-table"></div><div class="tracer-note"></div></div>
+  </div>
+  <div class="tracer-bar"><button type="button" class="tr-back">Zurück</button><button type="button" class="tr-next">Weiter</button><button type="button" class="tr-reset">Neu starten</button><span class="tr-count"></span></div>
+</div>
+<ul class="keypoints">
+  <li><strong>Block zuerst</strong><span>Auch wenn die Bedingung von Anfang an falsch wäre, läuft er einmal.</span></li>
+  <li><strong>Semikolon</strong><span>Hinter <code>while (...)</code> am Ende steht bei do while ein Semikolon. Bei der normalen while Schleife nicht.</span></li>
+  <li><strong>Variable vorher anlegen</strong><span><code>zahl</code> muss vor dem do stehen, sonst kennt die Bedingung sie nicht.</span></li>
+</ul>
+<h3>while oder do while?</h3>
+<table>
+  <tr><th></th><th>while</th><th>do while</th></tr>
+  <tr><td>Bedingung</td><td>Vor dem Block</td><td>Nach dem Block</td></tr>
+  <tr><td>Läuft mindestens</td><td>Nullmal</td><td>Einmal</td></tr>
+  <tr><td>Typisch</td><td>Zählen, Suchen, Warten</td><td>Eingabe prüfen</td></tr>
+  <tr><td>Semikolon am Ende</td><td>Nein</td><td>Ja</td></tr>
+</table>
+<div class="summary">
+  <div class="summary-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    Zusammenfassung
+  </div>
+  <div class="summary-row">
+    <span class="key">Aufbau</span>
+    <span class="sep"></span>
+    <span class="desc">do { Block } while (Bedingung);</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">Prüfung</span>
+    <span class="sep"></span>
+    <span class="desc">Nach jedem Durchlauf</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">Mindestens</span>
+    <span class="sep"></span>
+    <span class="desc">Einmal</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">Pseudocode</span>
+    <span class="sep"></span>
+    <span class="desc">WIEDERHOLE BIS, Bedingung ist umgekehrt</span>
+  </div>
+  <div class="summary-note">Perfekt für Eingaben, die richtig sein müssen.</div>
+</div>
+<div class="tasks">
+  <div class="tasks-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Aufgaben
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">1</span>
+      <div class="task-text"><p>Was gibt <code>int n = 5; do { Console.WriteLine(n); n++; } while (n &lt; 3);</code> aus?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><strong>5</strong>, genau einmal. Der Block läuft zuerst. Danach ist <code>6 &lt; 3</code> falsch.</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">2</span>
+      <div class="task-text"><p>Wie oft läuft <code>int x = 10; do { x = x - 4; } while (x &gt; 0);</code>? Welchen Wert hat x am Ende?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>x wird 6, dann 2, dann minus 2. Danach gilt <code>x &gt; 0</code> nicht mehr. Die Schleife läuft <strong>dreimal</strong>, x ist <strong>minus 2</strong>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">3</span>
+      <div class="task-text"><p>Schreibe eine do while Schleife, die ein Passwort abfragt, bis es »geheim« lautet.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">string</span> passwort;
+<span class="kw">do</span>
+{
+    Console.<span class="fn">Write</span>(<span class="str">"Passwort: "</span>);
+    passwort = Console.<span class="fn">ReadLine</span>();
+}
+<span class="kw">while</span> (passwort != <span class="str">"geheim"</span>);
+Console.<span class="fn">WriteLine</span>(<span class="str">"Willkommen"</span>);</code></pre>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">4</span>
+      <div class="task-text"><p>Pseudocode: WIEDERHOLE EINGABE alter BIS alter >= 0. Setze das in C# um.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">int</span> alter;
+<span class="kw">do</span>
+{
+    alter = <span class="kw">int</span>.<span class="fn">Parse</span>(Console.<span class="fn">ReadLine</span>());
+}
+<span class="kw">while</span> (alter &lt; <span class="num">0</span>);</code></pre>
+</div>
+    </details>
+  </div>
+</div>
+</section>
+
+<section class="tab-content" id="tab-for">
+<h2 class="section-title">for und foreach</h2>
+<p class="section-subtitle">Zählschleife und Listenschleife, ineinander, break und continue.</p>
+<p>Die for Schleife ist die Zählschleife. Sie hat Startwert, Bedingung und Schritt in einer Zeile. Du nutzt sie, wenn du weißt, wie oft die Schleife laufen soll.</p>
+<pre><code><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">5</span>; i++)
+{
+    Console.<span class="fn">WriteLine</span>(i);
+}</code></pre>
+<ul class="keypoints">
+  <li><strong>int i = 1</strong><span>Startwert. Läuft einmal ganz am Anfang.</span></li>
+  <li><strong>i <= 5</strong><span>Bedingung. Wird vor jedem Durchlauf geprüft.</span></li>
+  <li><strong>i++</strong><span>Schritt. Läuft nach jedem Durchlauf und erhöht i um 1.</span></li>
+</ul>
+<div class="folie"><svg viewBox="0 0 760 192" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="192" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="39.0" text-anchor="middle" font-size="12" font-weight="700" fill="#0071e3">summeBis5</text><rect x="40.0" y="50.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="69.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">summe ← 0</text><rect x="40.0" y="80.0" width="400.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="98.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">FÜR i VON 1 BIS 5</text><rect x="40.0" y="108.0" width="22.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="62.0" y="108.0" width="378.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="251.0" y="127.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">summe ← summe + i</text><rect x="40.0" y="138.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="157.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE summe</text><text x="480.0" y="40.0" text-anchor="start" font-size="12" font-weight="700" fill="#c77700">So liest du es:</text><text x="480.0" y="64.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">summe startet bei 0.</text><text x="480.0" y="88.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">i zählt von 1 bis 5.</text><text x="480.0" y="112.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Jedes i wird zur Summe addiert.</text></svg></div>
+<div class="duo">
+  <div class="duo-col"><div class="duo-label">Pseudocode</div><pre><code>summe ← <span class="num">0</span>
+<span class="kw">FÜR</span> i <span class="kw">VON</span> <span class="num">1</span> <span class="kw">BIS</span> <span class="num">5</span>
+    summe ← summe + i
+<span class="kw">ENDE</span> <span class="kw">FÜR</span>
+<span class="kw">AUSGABE</span> summe</code></pre></div>
+  <div class="duo-col"><div class="duo-label">C#</div><pre><code><span class="kw">int</span> summe = <span class="num">0</span>;
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">5</span>; i++)
+{
+    summe = summe + i;
+}
+Console.<span class="fn">WriteLine</span>(summe);</code></pre></div>
+</div>
+<div class="tracer" data-steps="{&quot;vars&quot;: [&quot;i&quot;, &quot;summe&quot;], &quot;steps&quot;: [{&quot;l&quot;: 0, &quot;v&quot;: {&quot;i&quot;: &quot;?&quot;, &quot;summe&quot;: &quot;0&quot;}, &quot;n&quot;: &quot;summe startet bei 0.&quot;}, {&quot;l&quot;: 1, &quot;v&quot;: {&quot;i&quot;: &quot;1&quot;, &quot;summe&quot;: &quot;0&quot;}, &quot;n&quot;: &quot;Start: i bekommt 1. Dann wird geprüft, ob 1 &lt;= 5 gilt.&quot;}, {&quot;l&quot;: 3, &quot;v&quot;: {&quot;i&quot;: &quot;1&quot;, &quot;summe&quot;: &quot;1&quot;}, &quot;n&quot;: &quot;summe wird 1.&quot;}, {&quot;l&quot;: 1, &quot;v&quot;: {&quot;i&quot;: &quot;2&quot;, &quot;summe&quot;: &quot;1&quot;}, &quot;n&quot;: &quot;i++ erhöht i auf 2. Dann wird geprüft, ob 2 &lt;= 5 gilt.&quot;}, {&quot;l&quot;: 3, &quot;v&quot;: {&quot;i&quot;: &quot;2&quot;, &quot;summe&quot;: &quot;3&quot;}, &quot;n&quot;: &quot;summe wird 3.&quot;}, {&quot;l&quot;: 1, &quot;v&quot;: {&quot;i&quot;: &quot;3&quot;, &quot;summe&quot;: &quot;3&quot;}, &quot;n&quot;: &quot;i++ erhöht i auf 3. Dann wird geprüft, ob 3 &lt;= 5 gilt.&quot;}, {&quot;l&quot;: 3, &quot;v&quot;: {&quot;i&quot;: &quot;3&quot;, &quot;summe&quot;: &quot;6&quot;}, &quot;n&quot;: &quot;summe wird 6.&quot;}, {&quot;l&quot;: 1, &quot;v&quot;: {&quot;i&quot;: &quot;4&quot;, &quot;summe&quot;: &quot;6&quot;}, &quot;n&quot;: &quot;i++ erhöht i auf 4. Dann wird geprüft, ob 4 &lt;= 5 gilt.&quot;}, {&quot;l&quot;: 3, &quot;v&quot;: {&quot;i&quot;: &quot;4&quot;, &quot;summe&quot;: &quot;10&quot;}, &quot;n&quot;: &quot;summe wird 10.&quot;}, {&quot;l&quot;: 1, &quot;v&quot;: {&quot;i&quot;: &quot;5&quot;, &quot;summe&quot;: &quot;10&quot;}, &quot;n&quot;: &quot;i++ erhöht i auf 5. Dann wird geprüft, ob 5 &lt;= 5 gilt.&quot;}, {&quot;l&quot;: 3, &quot;v&quot;: {&quot;i&quot;: &quot;5&quot;, &quot;summe&quot;: &quot;15&quot;}, &quot;n&quot;: &quot;summe wird 15.&quot;}, {&quot;l&quot;: 1, &quot;v&quot;: {&quot;i&quot;: &quot;6&quot;, &quot;summe&quot;: &quot;15&quot;}, &quot;n&quot;: &quot;i++ erhöht i auf 6. 6 &lt;= 5 gilt nicht. Die Schleife endet.&quot;}, {&quot;l&quot;: 5, &quot;v&quot;: {&quot;i&quot;: &quot;6&quot;, &quot;summe&quot;: &quot;15&quot;}, &quot;n&quot;: &quot;Ausgabe: 15.&quot;}]}">
+  <div class="tracer-head">Schritt für Schritt durchklicken</div>
+  <div class="tracer-body">
+    <pre class="tracer-code"><code><span class="tl" data-l="0">int summe = 0;</span><span class="tl" data-l="1">for (int i = 1; i &lt;= 5; i++)</span><span class="tl" data-l="2">{</span><span class="tl" data-l="3">    summe = summe + i;</span><span class="tl" data-l="4">}</span><span class="tl" data-l="5">Console.WriteLine(summe);</span></code></pre>
+    <div class="tracer-side"><div class="tracer-table"></div><div class="tracer-note"></div></div>
+  </div>
+  <div class="tracer-bar"><button type="button" class="tr-back">Zurück</button><button type="button" class="tr-next">Weiter</button><button type="button" class="tr-reset">Neu starten</button><span class="tr-count"></span></div>
+</div>
+<h3>Anders zählen</h3>
+<table>
+  <tr><th>Wunsch</th><th>Schleife</th></tr>
+  <tr><td>Von 0 bis 9</td><td><code>for (int i = 0; i &lt; 10; i++)</code></td></tr>
+  <tr><td>Rückwärts von 10 bis 1</td><td><code>for (int i = 10; i &gt;= 1; i--)</code></td></tr>
+  <tr><td>In Zweierschritten</td><td><code>for (int i = 0; i &lt;= 10; i += 2)</code></td></tr>
+</table>
+<h3>foreach: jedes Element einer Liste</h3>
+<p>Hast du eine Liste oder ein Array, geht <code>foreach</code> jedes Element nacheinander durch. Du brauchst keinen Zähler. Pseudocode sagt dazu FÜR JEDEN.</p>
+<div class="folie"><svg viewBox="0 0 760 240" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="240" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="39.0" text-anchor="middle" font-size="12" font-weight="700" fill="#0071e3">zaehleGerade</text><rect x="40.0" y="50.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="69.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">anzahl ← 0</text><rect x="40.0" y="80.0" width="400.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="98.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">FÜR JEDEN z IN zahlen</text><rect x="40.0" y="108.0" width="22.0" height="78.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="62.0" y="108.0" width="378.0" height="48.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="62.0" y1="108.0" x2="251.0" y2="156.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="440.0" y1="108.0" x2="251.0" y2="156.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="251.0" y="125.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">z MOD 2 = 0 ?</text><text x="72.0" y="150.0" text-anchor="start" font-size="10.5" font-weight="700" fill="#1e7b34">Ja</text><text x="430.0" y="150.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#c92a20">Nein</text><rect x="62.0" y="156.0" width="189.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="156.5" y="175.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">anzahl ← anzahl + 1</text><rect x="251.0" y="156.0" width="189.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="40.0" y="186.0" width="400.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="240.0" y="205.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE anzahl</text><text x="480.0" y="40.0" text-anchor="start" font-size="12" font-weight="700" fill="#c77700">So liest du es:</text><text x="480.0" y="64.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Für jede Zahl in der Liste:</text><text x="480.0" y="88.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Ist sie gerade?</text><text x="480.0" y="112.0" text-anchor="start" font-size="12" font-weight="500" fill="#1d1d1f">Dann zähle eins dazu.</text></svg></div>
+<div class="duo">
+  <div class="duo-col"><div class="duo-label">Pseudocode</div><pre><code>anzahl ← <span class="num">0</span>
+<span class="kw">FÜR</span> <span class="kw">JEDEN</span> z <span class="kw">IN</span> zahlen
+    <span class="kw">WENN</span> z <span class="kw">MOD</span> <span class="num">2</span> = <span class="num">0</span> <span class="kw">DANN</span>
+        anzahl ← anzahl + <span class="num">1</span>
+    <span class="kw">ENDE</span> <span class="kw">WENN</span>
+<span class="kw">ENDE</span> <span class="kw">FÜR</span>
+<span class="kw">AUSGABE</span> anzahl</code></pre></div>
+  <div class="duo-col"><div class="duo-label">C#</div><pre><code><span class="kw">int</span>[] zahlen = { <span class="num">3</span>, <span class="num">8</span>, <span class="num">5</span>, <span class="num">6</span> };
+<span class="kw">int</span> anzahl = <span class="num">0</span>;
+<span class="kw">foreach</span> (<span class="kw">int</span> z <span class="kw">in</span> zahlen)
+{
+    <span class="kw">if</span> (z % <span class="num">2</span> == <span class="num">0</span>)
+    {
+        anzahl++;
+    }
+}
+Console.<span class="fn">WriteLine</span>(anzahl);</code></pre></div>
+</div>
+<div class="tracer" data-steps="{&quot;vars&quot;: [&quot;z&quot;, &quot;anzahl&quot;], &quot;steps&quot;: [{&quot;l&quot;: 0, &quot;v&quot;: {&quot;z&quot;: &quot;?&quot;, &quot;anzahl&quot;: &quot;?&quot;}, &quot;n&quot;: &quot;Die Liste enthält vier Zahlen.&quot;}, {&quot;l&quot;: 1, &quot;v&quot;: {&quot;z&quot;: &quot;?&quot;, &quot;anzahl&quot;: &quot;0&quot;}, &quot;n&quot;: &quot;anzahl startet bei 0.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;z&quot;: &quot;3&quot;, &quot;anzahl&quot;: &quot;0&quot;}, &quot;n&quot;: &quot;z ist der nächste Wert aus der Liste: 3.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;z&quot;: &quot;3&quot;, &quot;anzahl&quot;: &quot;0&quot;}, &quot;n&quot;: &quot;3 % 2 ist 1. Gerade? Nein.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;z&quot;: &quot;8&quot;, &quot;anzahl&quot;: &quot;0&quot;}, &quot;n&quot;: &quot;z ist der nächste Wert aus der Liste: 8.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;z&quot;: &quot;8&quot;, &quot;anzahl&quot;: &quot;0&quot;}, &quot;n&quot;: &quot;8 % 2 ist 0. Gerade? Ja.&quot;}, {&quot;l&quot;: 6, &quot;v&quot;: {&quot;z&quot;: &quot;8&quot;, &quot;anzahl&quot;: &quot;1&quot;}, &quot;n&quot;: &quot;anzahl wird 1.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;z&quot;: &quot;5&quot;, &quot;anzahl&quot;: &quot;1&quot;}, &quot;n&quot;: &quot;z ist der nächste Wert aus der Liste: 5.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;z&quot;: &quot;5&quot;, &quot;anzahl&quot;: &quot;1&quot;}, &quot;n&quot;: &quot;5 % 2 ist 1. Gerade? Nein.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;z&quot;: &quot;6&quot;, &quot;anzahl&quot;: &quot;1&quot;}, &quot;n&quot;: &quot;z ist der nächste Wert aus der Liste: 6.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;z&quot;: &quot;6&quot;, &quot;anzahl&quot;: &quot;1&quot;}, &quot;n&quot;: &quot;6 % 2 ist 0. Gerade? Ja.&quot;}, {&quot;l&quot;: 6, &quot;v&quot;: {&quot;z&quot;: &quot;6&quot;, &quot;anzahl&quot;: &quot;2&quot;}, &quot;n&quot;: &quot;anzahl wird 2.&quot;}, {&quot;l&quot;: 9, &quot;v&quot;: {&quot;z&quot;: &quot;6&quot;, &quot;anzahl&quot;: &quot;2&quot;}, &quot;n&quot;: &quot;Die Liste ist durch. Ausgabe: 2.&quot;}]}">
+  <div class="tracer-head">Schritt für Schritt durchklicken</div>
+  <div class="tracer-body">
+    <pre class="tracer-code"><code><span class="tl" data-l="0">int[] zahlen = { 3, 8, 5, 6 };</span><span class="tl" data-l="1">int anzahl = 0;</span><span class="tl" data-l="2">foreach (int z in zahlen)</span><span class="tl" data-l="3">{</span><span class="tl" data-l="4">    if (z % 2 == 0)</span><span class="tl" data-l="5">    {</span><span class="tl" data-l="6">        anzahl++;</span><span class="tl" data-l="7">    }</span><span class="tl" data-l="8">}</span><span class="tl" data-l="9">Console.WriteLine(anzahl);</span></code></pre>
+    <div class="tracer-side"><div class="tracer-table"></div><div class="tracer-note"></div></div>
+  </div>
+  <div class="tracer-bar"><button type="button" class="tr-back">Zurück</button><button type="button" class="tr-next">Weiter</button><button type="button" class="tr-reset">Neu starten</button><span class="tr-count"></span></div>
+</div>
+<h3>Schleifen ineinander</h3>
+<p>Eine Schleife darf in einer anderen stehen. Die innere läuft dann bei jedem Durchlauf der äußeren komplett durch. Beispiel: ein kleines Einmaleins.</p>
+<pre><code><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">3</span>; i++)
+{
+    <span class="kw">for</span> (<span class="kw">int</span> j = <span class="num">1</span>; j &lt;= <span class="num">3</span>; j++)
+    {
+        Console.<span class="fn">Write</span>(i * j + <span class="str">" "</span>);
+    }
+    Console.<span class="fn">WriteLine</span>();
+}</code></pre>
+<pre class="term"><code><span class="to">1 2 3 </span>
+<span class="to">2 4 6 </span>
+<span class="to">3 6 9 </span></code></pre>
+<h3>break und continue</h3>
+<table>
+  <tr><th>Wort</th><th>Wirkung</th><th>Beispiel</th></tr>
+  <tr><td><code>break</code></td><td>Beendet die Schleife sofort.</td><td>Zahl gefunden, weiter suchen ist sinnlos.</td></tr>
+  <tr><td><code>continue</code></td><td>Überspringt den Rest des Durchlaufs und macht mit dem nächsten weiter.</td><td>Negative Zahlen überspringen.</td></tr>
+</table>
+<pre><code><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">10</span>; i++)
+{
+    <span class="kw">if</span> (i % <span class="num">2</span> == <span class="num">0</span>)
+    {
+        <span class="kw">continue</span>;
+    }
+    <span class="kw">if</span> (i &gt; <span class="num">7</span>)
+    {
+        <span class="kw">break</span>;
+    }
+    Console.<span class="fn">Write</span>(i + <span class="str">" "</span>);
+}</code></pre>
+<p>Ausgabe: <code>1 3 5 7</code>. Gerade Zahlen werden übersprungen, bei 9 bricht die Schleife ab.</p>
+<h3>Endlos mit gezieltem Ausstieg</h3>
+<p>Manchmal soll etwas so lange laufen, bis der Nutzer es beendet, zum Beispiel ein Menü. Dann schreibst du als Bedingung einfach <code>true</code> und beendest die Schleife von innen mit <code>break</code>.</p>
+<pre><code><span class="kw">while</span> (<span class="kw">true</span>)
+{
+    Console.<span class="fn">Write</span>(<span class="str">"Befehl (ende zum Beenden): "</span>);
+    <span class="kw">string</span> befehl = Console.<span class="fn">ReadLine</span>();
+    <span class="kw">if</span> (befehl == <span class="str">"ende"</span>)
+    {
+        <span class="kw">break</span>;
+    }
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Du hast "</span> + befehl + <span class="str">" eingegeben."</span>);
+}</code></pre>
+<p>Die Bedingung <code>true</code> ist nie falsch. Nur das <code>break</code> beendet die Schleife. Vergisst du es, hast du eine Endlosschleife.</p>
+<div class="summary">
+  <div class="summary-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    Zusammenfassung
+  </div>
+  <div class="summary-row">
+    <span class="key">for</span>
+    <span class="sep"></span>
+    <span class="desc">Start, Bedingung, Schritt in einer Zeile</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">foreach</span>
+    <span class="sep"></span>
+    <span class="desc">Jedes Element einer Liste</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">Hoch und runter</span>
+    <span class="sep"></span>
+    <span class="desc"><code>i++</code> zählt hoch, <code>i--</code> zählt runter</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">break</span>
+    <span class="sep"></span>
+    <span class="desc">Schleife beenden</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">continue</span>
+    <span class="sep"></span>
+    <span class="desc">Zum nächsten Durchlauf</span>
+  </div>
+  <div class="summary-note">for, wenn du die Anzahl kennst. foreach, wenn du eine Liste hast.</div>
+</div>
+<div class="tasks">
+  <div class="tasks-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Aufgaben
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">1</span>
+      <div class="task-text"><p>Gib alle Zahlen von 1 bis 10 aus.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">10</span>; i++)
+{
+    Console.<span class="fn">WriteLine</span>(i);
+}</code></pre>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">2</span>
+      <div class="task-text"><p>Berechne die Summe aller Zahlen von 1 bis 100. Welchen Wert erhältst du?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">int</span> summe = <span class="num">0</span>;
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">100</span>; i++)
+{
+    summe = summe + i;
+}
+Console.<span class="fn">WriteLine</span>(summe);</code></pre>
+<p>Das Ergebnis ist <strong>5050</strong>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">3</span>
+      <div class="task-text"><p>Was gibt <code>for (int i = 10; i &gt; 0; i -= 3) { Console.Write(i + " "); }</code> aus?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Die Werte 10, 7, 4 und 1. Danach wäre i minus 2, die Bedingung stimmt nicht mehr. Ausgabe: <strong>10 7 4 1</strong>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">4</span>
+      <div class="task-text"><p>Finde mit foreach die größte Zahl in <code>int[] zahlen = { 4, 9, 2, 7 };</code>.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">int</span> max = zahlen[<span class="num">0</span>];
+<span class="kw">foreach</span> (<span class="kw">int</span> z <span class="kw">in</span> zahlen)
+{
+    <span class="kw">if</span> (z &gt; max)
+    {
+        max = z;
+    }
+}
+Console.<span class="fn">WriteLine</span>(max);</code></pre>
+<p>Ausgabe: <strong>9</strong>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">5</span>
+      <div class="task-text"><p>Berechne die Fakultät von 5, also 1 mal 2 mal 3 mal 4 mal 5.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">int</span> ergebnis = <span class="num">1</span>;
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">5</span>; i++)
+{
+    ergebnis = ergebnis * i;
+}
+Console.<span class="fn">WriteLine</span>(ergebnis);</code></pre>
+<p>Das Ergebnis ist <strong>120</strong>.</p>
+</div>
+    </details>
+  </div>
+</div>
+</section>
+
+<section class="tab-content" id="tab-trockentest">
+<h2 class="section-title">Schleife durchspielen</h2>
+<p class="section-subtitle">Den Ablauf Schritt für Schritt auf Papier nachvollziehen.</p>
+<p>Im Kopf oder auf Papier eine Schleife durchzuspielen, heißt Trockentest. In Prüfungen kommt das häufig vor: »Was gibt der Code aus?« Mit einer Tabelle gelingt es zuverlässig.</p>
+<h3>So gehst du vor</h3>
+<ul class="keypoints">
+  <li><strong>1</strong><span>Mache eine Spalte für jede Variable und eine für die Bedingung.</span></li>
+  <li><strong>2</strong><span>Trage die Startwerte ein.</span></li>
+  <li><strong>3</strong><span>Prüfe die Bedingung. Schreibe wahr oder falsch hin.</span></li>
+  <li><strong>4</strong><span>Ist sie wahr, gehe den Block Zeile für Zeile durch und trage neue Werte ein.</span></li>
+  <li><strong>5</strong><span>Wiederhole ab Schritt 3. Ist sie falsch, mache hinter der Schleife weiter.</span></li>
+</ul>
+<h3>Beispiel 1: while</h3>
+<pre><code><span class="kw">int</span> x = <span class="num">20</span>;
+<span class="kw">int</span> n = <span class="num">0</span>;
+<span class="kw">while</span> (x &gt; <span class="num">3</span>)
+{
+    x = x / <span class="num">2</span>;
+    n++;
+}</code></pre>
+<table>
+  <tr><th>Durchlauf</th><th>Bedingung x > 3</th><th>x</th><th>n</th></tr>
+  <tr><td>Start</td><td></td><td>20</td><td>0</td></tr>
+  <tr><td>1</td><td>20 > 3 wahr</td><td>10</td><td>1</td></tr>
+  <tr><td>2</td><td>10 > 3 wahr</td><td>5</td><td>2</td></tr>
+  <tr><td>3</td><td>5 > 3 wahr</td><td>2</td><td>3</td></tr>
+  <tr><td>Prüfung</td><td>2 > 3 falsch</td><td>2</td><td>3</td></tr>
+</table>
+<p>Ergebnis: x ist 2, n ist 3.</p>
+<h3>Beispiel 2: for mit if</h3>
+<pre><code><span class="kw">int</span> s = <span class="num">0</span>;
+<span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">6</span>; i++)
+{
+    <span class="kw">if</span> (i % <span class="num">2</span> == <span class="num">0</span>)
+    {
+        s = s + i;
+    }
+}</code></pre>
+<table>
+  <tr><th>i</th><th>i % 2 == 0</th><th>s danach</th></tr>
+  <tr><td>1</td><td>falsch</td><td>0</td></tr>
+  <tr><td>2</td><td>wahr</td><td>2</td></tr>
+  <tr><td>3</td><td>falsch</td><td>2</td></tr>
+  <tr><td>4</td><td>wahr</td><td>6</td></tr>
+  <tr><td>5</td><td>falsch</td><td>6</td></tr>
+  <tr><td>6</td><td>wahr</td><td>12</td></tr>
+</table>
+<p>Ergebnis: s ist 12, die Summe der geraden Zahlen von 1 bis 6.</p>
+<h3>Beispiel 3: Schleife in Schleife</h3>
+<pre><code><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">3</span>; i++)
+{
+    <span class="kw">for</span> (<span class="kw">int</span> j = <span class="num">1</span>; j &lt;= <span class="num">2</span>; j++)
+    {
+        Console.<span class="fn">Write</span>(i * j + <span class="str">" "</span>);
+    }
+}</code></pre>
+<table>
+  <tr><th>i</th><th>j</th><th>Ausgabe</th></tr>
+  <tr><td>1</td><td>1</td><td>1</td></tr>
+  <tr><td>1</td><td>2</td><td>2</td></tr>
+  <tr><td>2</td><td>1</td><td>2</td></tr>
+  <tr><td>2</td><td>2</td><td>4</td></tr>
+  <tr><td>3</td><td>1</td><td>3</td></tr>
+  <tr><td>3</td><td>2</td><td>6</td></tr>
+</table>
+<p>Ausgabe: <code>1 2 2 4 3 6</code>. Die innere Schleife läuft bei jedem i komplett durch.</p>
+<p>Zum Durchklicken siehst du hier, wie die innere Schleife bei jedem i wieder von vorn beginnt:</p>
+<div class="tracer" data-steps="{&quot;vars&quot;: [&quot;i&quot;, &quot;j&quot;, &quot;Ausgabe&quot;], &quot;steps&quot;: [{&quot;l&quot;: 0, &quot;v&quot;: {&quot;i&quot;: &quot;1&quot;, &quot;j&quot;: &quot;?&quot;, &quot;Ausgabe&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Äußere Schleife: i ist 1.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;i&quot;: &quot;1&quot;, &quot;j&quot;: &quot;1&quot;, &quot;Ausgabe&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Innere Schleife: j ist 1.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;i&quot;: &quot;1&quot;, &quot;j&quot;: &quot;1&quot;, &quot;Ausgabe&quot;: &quot;1&quot;}, &quot;n&quot;: &quot;Ausgabe: 1 mal 1 ist 1.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;i&quot;: &quot;1&quot;, &quot;j&quot;: &quot;2&quot;, &quot;Ausgabe&quot;: &quot;1&quot;}, &quot;n&quot;: &quot;Innere Schleife: j ist 2.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;i&quot;: &quot;1&quot;, &quot;j&quot;: &quot;2&quot;, &quot;Ausgabe&quot;: &quot;1 2&quot;}, &quot;n&quot;: &quot;Ausgabe: 1 mal 2 ist 2.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;i&quot;: &quot;1&quot;, &quot;j&quot;: &quot;3&quot;, &quot;Ausgabe&quot;: &quot;1 2&quot;}, &quot;n&quot;: &quot;j wird 3. 3 &lt;= 2 gilt nicht. Die innere Schleife ist fertig, zurück zur äußeren.&quot;}, {&quot;l&quot;: 0, &quot;v&quot;: {&quot;i&quot;: &quot;2&quot;, &quot;j&quot;: &quot;?&quot;, &quot;Ausgabe&quot;: &quot;1 2&quot;}, &quot;n&quot;: &quot;Äußere Schleife: i wird 2. Die innere Schleife beginnt von vorn.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;i&quot;: &quot;2&quot;, &quot;j&quot;: &quot;1&quot;, &quot;Ausgabe&quot;: &quot;1 2&quot;}, &quot;n&quot;: &quot;Innere Schleife: j ist 1.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;i&quot;: &quot;2&quot;, &quot;j&quot;: &quot;1&quot;, &quot;Ausgabe&quot;: &quot;1 2 2&quot;}, &quot;n&quot;: &quot;Ausgabe: 2 mal 1 ist 2.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;i&quot;: &quot;2&quot;, &quot;j&quot;: &quot;2&quot;, &quot;Ausgabe&quot;: &quot;1 2 2&quot;}, &quot;n&quot;: &quot;Innere Schleife: j ist 2.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;i&quot;: &quot;2&quot;, &quot;j&quot;: &quot;2&quot;, &quot;Ausgabe&quot;: &quot;1 2 2 4&quot;}, &quot;n&quot;: &quot;Ausgabe: 2 mal 2 ist 4.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;i&quot;: &quot;2&quot;, &quot;j&quot;: &quot;3&quot;, &quot;Ausgabe&quot;: &quot;1 2 2 4&quot;}, &quot;n&quot;: &quot;j wird 3. 3 &lt;= 2 gilt nicht. Die innere Schleife ist fertig, zurück zur äußeren.&quot;}, {&quot;l&quot;: 0, &quot;v&quot;: {&quot;i&quot;: &quot;3&quot;, &quot;j&quot;: &quot;?&quot;, &quot;Ausgabe&quot;: &quot;1 2 2 4&quot;}, &quot;n&quot;: &quot;Äußere Schleife: i wird 3. Die innere Schleife beginnt von vorn.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;i&quot;: &quot;3&quot;, &quot;j&quot;: &quot;1&quot;, &quot;Ausgabe&quot;: &quot;1 2 2 4&quot;}, &quot;n&quot;: &quot;Innere Schleife: j ist 1.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;i&quot;: &quot;3&quot;, &quot;j&quot;: &quot;1&quot;, &quot;Ausgabe&quot;: &quot;1 2 2 4 3&quot;}, &quot;n&quot;: &quot;Ausgabe: 3 mal 1 ist 3.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;i&quot;: &quot;3&quot;, &quot;j&quot;: &quot;2&quot;, &quot;Ausgabe&quot;: &quot;1 2 2 4 3&quot;}, &quot;n&quot;: &quot;Innere Schleife: j ist 2.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;i&quot;: &quot;3&quot;, &quot;j&quot;: &quot;2&quot;, &quot;Ausgabe&quot;: &quot;1 2 2 4 3 6&quot;}, &quot;n&quot;: &quot;Ausgabe: 3 mal 2 ist 6.&quot;}, {&quot;l&quot;: 2, &quot;v&quot;: {&quot;i&quot;: &quot;3&quot;, &quot;j&quot;: &quot;3&quot;, &quot;Ausgabe&quot;: &quot;1 2 2 4 3 6&quot;}, &quot;n&quot;: &quot;j wird 3. 3 &lt;= 2 gilt nicht. Die innere Schleife ist fertig, zurück zur äußeren.&quot;}, {&quot;l&quot;: 0, &quot;v&quot;: {&quot;i&quot;: &quot;4&quot;, &quot;j&quot;: &quot;?&quot;, &quot;Ausgabe&quot;: &quot;1 2 2 4 3 6&quot;}, &quot;n&quot;: &quot;i++ erhöht i auf 4. 4 &lt;= 3 gilt nicht. Die äußere Schleife endet.&quot;}]}">
+  <div class="tracer-head">Schritt für Schritt durchklicken</div>
+  <div class="tracer-body">
+    <pre class="tracer-code"><code><span class="tl" data-l="0">for (int i = 1; i &lt;= 3; i++)</span><span class="tl" data-l="1">{</span><span class="tl" data-l="2">    for (int j = 1; j &lt;= 2; j++)</span><span class="tl" data-l="3">    {</span><span class="tl" data-l="4">        Console.Write(i * j + " ");</span><span class="tl" data-l="5">    }</span><span class="tl" data-l="6">}</span></code></pre>
+    <div class="tracer-side"><div class="tracer-table"></div><div class="tracer-note"></div></div>
+  </div>
+  <div class="tracer-bar"><button type="button" class="tr-back">Zurück</button><button type="button" class="tr-next">Weiter</button><button type="button" class="tr-reset">Neu starten</button><span class="tr-count"></span></div>
+</div>
+<div class="note tip">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <div class="note-content">
+    <strong>Genau lesen</strong>
+    Achte auf das Zeichen in der Bedingung. <code>&lt;</code> und <code>&lt;=</code> unterscheiden sich um einen ganzen Durchlauf. Das ist der häufigste Fehler im Trockentest.
+  </div>
+</div>
+<div class="summary">
+  <div class="summary-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    Zusammenfassung
+  </div>
+  <div class="summary-row">
+    <span class="key">Tabelle</span>
+    <span class="sep"></span>
+    <span class="desc">Eine Spalte je Variable, eine Zeile je Durchlauf</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">Reihenfolge</span>
+    <span class="sep"></span>
+    <span class="desc">Bedingung, Block, Bedingung, Block</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">Ende</span>
+    <span class="sep"></span>
+    <span class="desc">Wenn die Bedingung falsch ist</span>
+  </div>
+  <div class="summary-note">Schreib alles auf, rechne nicht im Kopf.</div>
+</div>
+<div class="tasks">
+  <div class="tasks-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Aufgaben
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">1</span>
+      <div class="task-text"><p>Spiele durch: <code>int a = 1; while (a &lt; 50) { a = a * 3; }</code>. Welchen Wert hat a am Ende?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>a wird 3, 9, 27 und 81. Bei 81 gilt <code>81 &lt; 50</code> nicht mehr. a ist <strong>81</strong>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">2</span>
+      <div class="task-text"><p>Spiele durch: <code>int summe = 0; for (int i = 1; i &lt;= 10; i++) { summe = summe + i; if (summe &gt; 10) { break; } }</code>. Was sind i und summe am Ende?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Die Summen sind 1, 3, 6, 10, 15. Bei i gleich 5 wird die Summe 15 und das break greift. <strong>i ist 5, summe ist 15</strong>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">3</span>
+      <div class="task-text"><p>Wie viele Zeilen gibt <code>for (int i = 1; i &lt;= 4; i++) { for (int j = 1; j &lt;= 3; j++) { Console.WriteLine(i + " " + j); } }</code> aus?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>4 mal 3, also <strong>12 Zeilen</strong>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">4</span>
+      <div class="task-text"><p>Spiele durch: <code>int k = 5; do { k = k - 2; } while (k &gt; 0);</code>. Wie oft läuft die Schleife, was ist k?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>k wird 3, dann 1, dann minus 1. Die Schleife läuft <strong>dreimal</strong>, k ist <strong>minus 1</strong>.</p>
+</div>
+    </details>
+  </div>
+</div>
+</section>
+
+<section class="tab-content" id="tab-tryparse">
+<h2 class="section-title">TryParse</h2>
+<p class="section-subtitle">Text sicher in eine Zahl umwandeln.</p>
+<p>Ein Nutzer tippt alles als Text. <code>Console.ReadLine()</code> liefert immer einen <code>string</code>. Willst du damit rechnen, musst du den Text in eine Zahl umwandeln. Dafür gibt es <code>int.Parse</code> und <code>int.TryParse</code>.</p>
+<h3>Das Problem mit Parse</h3>
+<pre><code>Console.<span class="fn">Write</span>(<span class="str">"Dein Alter: "</span>);
+<span class="kw">int</span> alter = <span class="kw">int</span>.<span class="fn">Parse</span>(Console.<span class="fn">ReadLine</span>());
+Console.<span class="fn">WriteLine</span>(<span class="str">"Nächstes Jahr bist du "</span> + (alter + <span class="num">1</span>));</code></pre>
+<p>Tippt jemand »abc« oder drückt nur Enter, stürzt das Programm mit einer Fehlermeldung ab. Der Fehler heißt FormatException.</p>
+<h3>Die Lösung: TryParse</h3>
+<p><code>TryParse</code> probiert die Umwandlung. Klappt sie, liefert die Methode <code>true</code> und legt die Zahl in der Variable ab. Klappt sie nicht, liefert sie <code>false</code>. Das Programm läuft weiter.</p>
+<div class="folie"><svg viewBox="0 0 760 250" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="250" rx="14" fill="#ffffff"/><rect x="30.0" y="90.0" width="150.0" height="60.0" rx="12" fill="#f5f5f7" stroke="#86868b" stroke-width="1.6"/><text x="105.0" y="118.0" text-anchor="middle" font-size="13" font-weight="700" fill="#1d1d1f">Eingabe</text><text x="105.0" y="135.0" text-anchor="middle" font-size="11" font-weight="500" fill="#6e6e73">immer Text</text><line x1="184.0" y1="120.0" x2="256.0" y2="120.0" stroke="#1d1d1f" stroke-width="1.8"/><path d="M262.0 120.0 L252.5 125.5 L252.5 114.5 Z" fill="#1d1d1f"/><rect x="266.0" y="80.0" width="190.0" height="80.0" rx="14" fill="#e8f2fd" stroke="#0071e3" stroke-width="1.6"/><text x="361.0" y="118.0" text-anchor="middle" font-size="13" font-weight="700" fill="#0071e3">int.TryParse</text><text x="361.0" y="135.0" text-anchor="middle" font-size="11" font-weight="500" fill="#6e6e73">versucht umzuwandeln</text><line x1="460.0" y1="100.0" x2="534.6" y2="62.7" stroke="#34c759" stroke-width="1.8"/><path d="M540.0 60.0 L533.9 69.2 L529.0 59.3 Z" fill="#34c759"/><line x1="460.0" y1="140.0" x2="534.9" y2="186.8" stroke="#ff3b30" stroke-width="1.8"/><path d="M540.0 190.0 L529.0 189.6 L534.8 180.3 Z" fill="#ff3b30"/><rect x="544.0" y="30.0" width="190.0" height="62.0" rx="13" fill="#eefbf1" stroke="#34c759" stroke-width="1.6"/><text x="639.0" y="59.0" text-anchor="middle" font-size="13" font-weight="700" fill="#1e7b34">true</text><text x="639.0" y="76.0" text-anchor="middle" font-size="11" font-weight="500" fill="#6e6e73">Zahl liegt in der Variable</text><rect x="544.0" y="160.0" width="190.0" height="62.0" rx="13" fill="#fff0ef" stroke="#ff3b30" stroke-width="1.6"/><text x="639.0" y="189.0" text-anchor="middle" font-size="13" font-weight="700" fill="#c92a20">false</text><text x="639.0" y="206.0" text-anchor="middle" font-size="11" font-weight="500" fill="#6e6e73">Variable bleibt 0</text><text x="380.0" y="214.0" text-anchor="middle" font-size="12" font-weight="600" fill="#6e6e73">Das Programm stürzt in keinem Fall ab.</text></svg></div>
+<pre><code>Console.<span class="fn">Write</span>(<span class="str">"Dein Alter: "</span>);
+<span class="kw">string</span> eingabe = Console.<span class="fn">ReadLine</span>();
+<span class="kw">if</span> (<span class="kw">int</span>.<span class="fn">TryParse</span>(eingabe, <span class="kw">out</span> <span class="kw">int</span> alter))
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Nächstes Jahr bist du "</span> + (alter + <span class="num">1</span>));
+}
+<span class="kw">else</span>
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Das war keine ganze Zahl."</span>);
+}</code></pre>
+<ul class="keypoints">
+  <li><strong>Rückgabe</strong><span>true oder false: Hat es geklappt?</span></li>
+  <li><strong>out int alter</strong><span>Hier landet die Zahl. <code>out</code> heißt: Die Methode schreibt in diese Variable. Die Variable darf direkt im Aufruf angelegt werden.</span></li>
+  <li><strong>if</strong><span>Mit dem Ergebnis entscheidest du, wie es weitergeht.</span></li>
+</ul>
+<table>
+  <tr><th>Eingabe</th><th>TryParse liefert</th><th>alter danach</th></tr>
+  <tr><td>42</td><td>true</td><td>42</td></tr>
+  <tr><td><code>-7</code></td><td>true</td><td><code>-7</code></td></tr>
+  <tr><td>abc</td><td>false</td><td>0</td></tr>
+  <tr><td></td><td>false</td><td>0</td></tr>
+  <tr><td>3,5</td><td>false</td><td>0</td></tr>
+</table>
+<div class="note info">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <div class="note-content">
+    <strong>Kommazahlen</strong>
+    Für Kommazahlen nimmst du <code>double.TryParse</code>. Mit deutscher Spracheinstellung schreibt der Nutzer ein Komma, also 3,5. Ein Punkt kann zu falschen Werten führen. Im Code selbst schreibst du Kommazahlen immer mit Punkt: <code>double d = 3.5;</code>.
+  </div>
+</div>
+<h3>TryParse in einer Schleife</h3>
+<p>So fragst du eine Zahl ab, bis sie wirklich passt. Das ist eine fußgesteuerte Schleife.</p>
+<pre><code><span class="kw">int</span> zahl;
+<span class="kw">bool</span> ok;
+<span class="kw">do</span>
+{
+    Console.<span class="fn">Write</span>(<span class="str">"Zahl von 1 bis 10: "</span>);
+    ok = <span class="kw">int</span>.<span class="fn">TryParse</span>(Console.<span class="fn">ReadLine</span>(), <span class="kw">out</span> zahl);
+}
+<span class="kw">while</span> (!ok || zahl &lt; <span class="num">1</span> || zahl &gt; <span class="num">10</span>);
+Console.<span class="fn">WriteLine</span>(<span class="str">"Danke, du hast "</span> + zahl + <span class="str">" eingegeben."</span>);</code></pre>
+<p>Die Schleife läuft weiter, wenn die Umwandlung nicht klappt (<code>!ok</code>) oder die Zahl außerhalb von 1 bis 10 liegt.</p>
+<div class="summary">
+  <div class="summary-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    Zusammenfassung
+  </div>
+  <div class="summary-row">
+    <span class="key">Parse</span>
+    <span class="sep"></span>
+    <span class="desc">Wandelt um, stürzt bei Fehlern ab</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">TryParse</span>
+    <span class="sep"></span>
+    <span class="desc">Wandelt um, meldet true oder false</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">out</span>
+    <span class="sep"></span>
+    <span class="desc">Hier landet das Ergebnis</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">double.TryParse</span>
+    <span class="sep"></span>
+    <span class="desc">Für Kommazahlen</span>
+  </div>
+  <div class="summary-note">Bei Eingaben von Nutzern immer TryParse verwenden.</div>
+</div>
+<div class="tasks">
+  <div class="tasks-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Aufgaben
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">1</span>
+      <div class="task-text"><p>Was liefert <code>int.TryParse("12a", out int x)</code> und was ist <code>x</code>?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p><code>false</code>, und <code>x</code> ist <strong>0</strong>. Die Eingabe enthält einen Buchstaben.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">2</span>
+      <div class="task-text"><p>Warum ist TryParse für Nutzereingaben besser als Parse?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Bei falschen Eingaben stürzt das Programm nicht ab. Du kannst mit <code>false</code> reagieren und zum Beispiel erneut fragen.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">3</span>
+      <div class="task-text"><p>Schreibe ein Programmstück: Eine Zahl einlesen. Ist sie eine ganze Zahl, wird ihr Doppeltes ausgegeben, sonst »Ungültig«.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">string</span> eingabe = Console.<span class="fn">ReadLine</span>();
+<span class="kw">if</span> (<span class="kw">int</span>.<span class="fn">TryParse</span>(eingabe, <span class="kw">out</span> <span class="kw">int</span> zahl))
+{
+    Console.<span class="fn">WriteLine</span>(zahl * <span class="num">2</span>);
+}
+<span class="kw">else</span>
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Ungültig"</span>);
+}</code></pre>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">4</span>
+      <div class="task-text"><p>Welche Schleife passt am besten, um eine Eingabe so lange zu wiederholen, bis sie stimmt?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p><code>do while</code>. Die Eingabe muss mindestens einmal erfolgen.</p>
+</div>
+    </details>
+  </div>
+</div>
+</section>
+
+<section class="tab-content" id="tab-trycatch">
+<h2 class="section-title">Try Catch</h2>
+<p class="section-subtitle">Fehler abfangen, damit das Programm weiterläuft.</p>
+<p>Manche Fehler lassen sich nicht vorher prüfen. Eine Datei fehlt, das Netzwerk ist weg, oder jemand will eine Pizza auf null Gäste verteilen. Dann erzeugt C# eine <strong>Ausnahme</strong>, englisch Exception. Ohne Gegenmaßnahme beendet sie das Programm. Mit <code>try catch</code> fängst du sie ab.</p>
+<div class="folie"><svg viewBox="0 0 760 300" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="300" rx="14" fill="#ffffff"/><rect x="30.0" y="100.0" width="140.0" height="60.0" rx="14" fill="#e8f2fd" stroke="#0071e3" stroke-width="1.6"/><text x="100.0" y="128.0" text-anchor="middle" font-size="13" font-weight="700" fill="#0071e3">try</text><text x="100.0" y="145.0" text-anchor="middle" font-size="11" font-weight="500" fill="#6e6e73">Hier läuft der Code</text><line x1="174.0" y1="118.0" x2="284.5" y2="72.3" stroke="#34c759" stroke-width="1.8"/><path d="M290.0 70.0 L283.3 78.7 L279.1 68.6 Z" fill="#34c759"/><text x="222.0" y="80.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1e7b34">kein Fehler</text><line x1="174.0" y1="142.0" x2="285.2" y2="226.4" stroke="#ff3b30" stroke-width="1.8"/><path d="M290.0 230.0 L279.1 228.6 L285.7 219.9 Z" fill="#ff3b30"/><text x="222.0" y="214.0" text-anchor="middle" font-size="11" font-weight="700" fill="#c92a20">Fehler</text><rect x="294.0" y="40.0" width="170.0" height="60.0" rx="13" fill="#eefbf1" stroke="#34c759" stroke-width="1.6"/><text x="379.0" y="68.0" text-anchor="middle" font-size="13" font-weight="700" fill="#1e7b34">weiter</text><text x="379.0" y="85.0" text-anchor="middle" font-size="11" font-weight="500" fill="#6e6e73">catch wird übersprungen</text><rect x="294.0" y="200.0" width="170.0" height="60.0" rx="14" fill="#fff0ef" stroke="#ff3b30" stroke-width="1.6"/><text x="379.0" y="228.0" text-anchor="middle" font-size="13" font-weight="700" fill="#c92a20">catch</text><text x="379.0" y="245.0" text-anchor="middle" font-size="11" font-weight="500" fill="#6e6e73">Fehler behandeln</text><line x1="468.0" y1="70.0" x2="555.5" y2="146.1" stroke="#1d1d1f" stroke-width="1.8"/><path d="M560.0 150.0 L549.2 147.9 L556.4 139.6 Z" fill="#1d1d1f"/><line x1="468.0" y1="230.0" x2="555.0" y2="173.3" stroke="#1d1d1f" stroke-width="1.8"/><path d="M560.0 170.0 L555.0 179.8 L549.0 170.6 Z" fill="#1d1d1f"/><rect x="564.0" y="120.0" width="170.0" height="60.0" rx="14" fill="#fff7ec" stroke="#ff9500" stroke-width="1.6"/><text x="649.0" y="148.0" text-anchor="middle" font-size="13" font-weight="700" fill="#c77700">finally</text><text x="649.0" y="165.0" text-anchor="middle" font-size="11" font-weight="500" fill="#6e6e73">läuft immer</text><text x="380.0" y="290.0" text-anchor="middle" font-size="12" font-weight="600" fill="#6e6e73">Danach geht das Programm normal weiter.</text></svg></div>
+<pre><code><span class="kw">try</span>
+{
+    Console.<span class="fn">Write</span>(<span class="str">"Wie viele Gäste sind da? "</span>);
+    <span class="kw">int</span> gaeste = <span class="kw">int</span>.<span class="fn">Parse</span>(Console.<span class="fn">ReadLine</span>());
+    <span class="kw">int</span> stuecke = <span class="num">8</span> / gaeste;
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Jeder bekommt "</span> + stuecke + <span class="str">" Stücke Pizza."</span>);
+}
+<span class="kw">catch</span> (FormatException)
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Bitte eine ganze Zahl eingeben."</span>);
+}
+<span class="kw">catch</span> (DivideByZeroException)
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Ohne Gäste bleibt die Pizza ganz."</span>);
+}
+<span class="kw">finally</span>
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Guten Appetit!"</span>);
+}</code></pre>
+<ul class="keypoints">
+  <li><strong>try</strong><span>Hier steht der Code, der schiefgehen könnte.</span></li>
+  <li><strong>catch</strong><span>Läuft nur, wenn im try Block eine passende Ausnahme auftritt. Der Typ in der Klammer sagt, welcher Fehler gemeint ist.</span></li>
+  <li><strong>finally</strong><span>Läuft immer, mit oder ohne Fehler. Gut zum Aufräumen, zum Beispiel um eine Datei zu schließen.</span></li>
+</ul>
+<h3>Durchklicken mit der Eingabe abc</h3>
+<div class="tracer" data-steps="{&quot;vars&quot;: [&quot;Eingabe&quot;, &quot;Ausgabe&quot;], &quot;steps&quot;: [{&quot;l&quot;: 0, &quot;v&quot;: {&quot;Eingabe&quot;: &quot;?&quot;, &quot;Ausgabe&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Der try Block beginnt.&quot;}, {&quot;l&quot;: 3, &quot;v&quot;: {&quot;Eingabe&quot;: &quot;abc&quot;, &quot;Ausgabe&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Jemand tippt abc statt einer Zahl. int.Parse kann das nicht umwandeln und löst eine FormatException aus.&quot;}, {&quot;l&quot;: 7, &quot;v&quot;: {&quot;Eingabe&quot;: &quot;abc&quot;, &quot;Ausgabe&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Der Rest des try Blocks wird übersprungen. C# sucht ein passendes catch und findet FormatException.&quot;}, {&quot;l&quot;: 9, &quot;v&quot;: {&quot;Eingabe&quot;: &quot;abc&quot;, &quot;Ausgabe&quot;: &quot;Bitte eine ganze Zahl eingeben.&quot;}, &quot;n&quot;: &quot;Der catch Block läuft.&quot;}, {&quot;l&quot;: 17, &quot;v&quot;: {&quot;Eingabe&quot;: &quot;abc&quot;, &quot;Ausgabe&quot;: &quot;Guten Appetit!&quot;}, &quot;n&quot;: &quot;finally läuft immer. Danach geht das Programm normal weiter.&quot;}]}">
+  <div class="tracer-head">Schritt für Schritt durchklicken</div>
+  <div class="tracer-body">
+    <pre class="tracer-code"><code><span class="tl" data-l="0">try</span><span class="tl" data-l="1">{</span><span class="tl" data-l="2">    Console.Write("Wie viele Gäste sind da? ");</span><span class="tl" data-l="3">    int gaeste = int.Parse(Console.ReadLine());</span><span class="tl" data-l="4">    int stuecke = 8 / gaeste;</span><span class="tl" data-l="5">    Console.WriteLine("Jeder bekommt " + stuecke + " Stücke Pizza.");</span><span class="tl" data-l="6">}</span><span class="tl" data-l="7">catch (FormatException)</span><span class="tl" data-l="8">{</span><span class="tl" data-l="9">    Console.WriteLine("Bitte eine ganze Zahl eingeben.");</span><span class="tl" data-l="10">}</span><span class="tl" data-l="11">catch (DivideByZeroException)</span><span class="tl" data-l="12">{</span><span class="tl" data-l="13">    Console.WriteLine("Ohne Gäste bleibt die Pizza ganz.");</span><span class="tl" data-l="14">}</span><span class="tl" data-l="15">finally</span><span class="tl" data-l="16">{</span><span class="tl" data-l="17">    Console.WriteLine("Guten Appetit!");</span><span class="tl" data-l="18">}</span></code></pre>
+    <div class="tracer-side"><div class="tracer-table"></div><div class="tracer-note"></div></div>
+  </div>
+  <div class="tracer-bar"><button type="button" class="tr-back">Zurück</button><button type="button" class="tr-next">Weiter</button><button type="button" class="tr-reset">Neu starten</button><span class="tr-count"></span></div>
+</div>
+<h3>Durchklicken mit der Eingabe 0 Gäste</h3>
+<div class="tracer" data-steps="{&quot;vars&quot;: [&quot;Eingabe&quot;, &quot;Ausgabe&quot;], &quot;steps&quot;: [{&quot;l&quot;: 0, &quot;v&quot;: {&quot;Eingabe&quot;: &quot;?&quot;, &quot;Ausgabe&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Der try Block beginnt.&quot;}, {&quot;l&quot;: 3, &quot;v&quot;: {&quot;Eingabe&quot;: &quot;0&quot;, &quot;Ausgabe&quot;: &quot;&quot;}, &quot;n&quot;: &quot;Niemand ist gekommen, also tippt jemand 0. Das ist eine gültige ganze Zahl. Parse klappt.&quot;}, {&quot;l&quot;: 4, &quot;v&quot;: {&quot;Eingabe&quot;: &quot;0&quot;, &quot;Ausgabe&quot;: &quot;&quot;}, &quot;n&quot;: &quot;8 Stücke auf 0 Gäste verteilen geht bei ganzen Zahlen nicht. Es entsteht eine DivideByZeroException.&quot;}, {&quot;l&quot;: 11, &quot;v&quot;: {&quot;Eingabe&quot;: &quot;0&quot;, &quot;Ausgabe&quot;: &quot;&quot;}, &quot;n&quot;: &quot;C# überspringt den Rest und sucht das passende catch. Das ist dieses hier.&quot;}, {&quot;l&quot;: 13, &quot;v&quot;: {&quot;Eingabe&quot;: &quot;0&quot;, &quot;Ausgabe&quot;: &quot;Ohne Gäste bleibt die Pizza ganz.&quot;}, &quot;n&quot;: &quot;Der catch Block läuft.&quot;}, {&quot;l&quot;: 17, &quot;v&quot;: {&quot;Eingabe&quot;: &quot;0&quot;, &quot;Ausgabe&quot;: &quot;Guten Appetit!&quot;}, &quot;n&quot;: &quot;finally läuft auch hier.&quot;}]}">
+  <div class="tracer-head">Schritt für Schritt durchklicken</div>
+  <div class="tracer-body">
+    <pre class="tracer-code"><code><span class="tl" data-l="0">try</span><span class="tl" data-l="1">{</span><span class="tl" data-l="2">    Console.Write("Wie viele Gäste sind da? ");</span><span class="tl" data-l="3">    int gaeste = int.Parse(Console.ReadLine());</span><span class="tl" data-l="4">    int stuecke = 8 / gaeste;</span><span class="tl" data-l="5">    Console.WriteLine("Jeder bekommt " + stuecke + " Stücke Pizza.");</span><span class="tl" data-l="6">}</span><span class="tl" data-l="7">catch (FormatException)</span><span class="tl" data-l="8">{</span><span class="tl" data-l="9">    Console.WriteLine("Bitte eine ganze Zahl eingeben.");</span><span class="tl" data-l="10">}</span><span class="tl" data-l="11">catch (DivideByZeroException)</span><span class="tl" data-l="12">{</span><span class="tl" data-l="13">    Console.WriteLine("Ohne Gäste bleibt die Pizza ganz.");</span><span class="tl" data-l="14">}</span><span class="tl" data-l="15">finally</span><span class="tl" data-l="16">{</span><span class="tl" data-l="17">    Console.WriteLine("Guten Appetit!");</span><span class="tl" data-l="18">}</span></code></pre>
+    <div class="tracer-side"><div class="tracer-table"></div><div class="tracer-note"></div></div>
+  </div>
+  <div class="tracer-bar"><button type="button" class="tr-back">Zurück</button><button type="button" class="tr-next">Weiter</button><button type="button" class="tr-reset">Neu starten</button><span class="tr-count"></span></div>
+</div>
+<h3>Der Fehler im Detail</h3>
+<pre><code><span class="kw">try</span>
+{
+    <span class="kw">int</span> x = <span class="kw">int</span>.<span class="fn">Parse</span>(<span class="str">"abc"</span>);
+}
+<span class="kw">catch</span> (Exception ex)
+{
+    Console.<span class="fn">WriteLine</span>(ex.Message);
+}</code></pre>
+<p><code>Exception</code> ist der Oberbegriff für alle Ausnahmen. <code>ex.Message</code> liefert den Fehlertext, zum Beispiel für ein Protokoll. Wenn du alles abfangen willst, nimmst du <code>Exception</code>. Besser sind genaue Typen, weil du dann gezielt reagieren kannst.</p>
+<table>
+  <tr><th>Ausnahme</th><th>Typischer Auslöser</th></tr>
+  <tr><td><code>FormatException</code></td><td>Text lässt sich nicht in eine Zahl umwandeln</td></tr>
+  <tr><td><code>DivideByZeroException</code></td><td>Ganze Zahl durch 0 geteilt</td></tr>
+  <tr><td><code>IndexOutOfRangeException</code></td><td>Zugriff auf ein Feld, das es im Array nicht gibt</td></tr>
+  <tr><td><code>FileNotFoundException</code></td><td>Datei nicht vorhanden</td></tr>
+  <tr><td><code>OverflowException</code></td><td>Zahl ist zu groß für den Datentyp</td></tr>
+</table>
+<h3>Selbst eine Ausnahme auslösen</h3>
+<p>Mit <code>throw</code> löst du selbst eine Ausnahme aus, wenn etwas nicht stimmt. Ein catch weiter oben kann sie dann auffangen.</p>
+<pre><code><span class="kw">try</span>
+{
+    <span class="kw">int</span> alter = -<span class="num">5</span>;
+    <span class="kw">if</span> (alter &lt; <span class="num">0</span>)
+    {
+        <span class="kw">throw</span> <span class="kw">new</span> <span class="fn">ArgumentException</span>(<span class="str">"Das Alter darf nicht negativ sein."</span>);
+    }
+}
+<span class="kw">catch</span> (ArgumentException ex)
+{
+    Console.<span class="fn">WriteLine</span>(ex.Message);
+}</code></pre>
+<h3>TryParse oder try catch?</h3>
+<table>
+  <tr><th></th><th>TryParse</th><th>try catch</th></tr>
+  <tr><td>Wann</td><td>Fehler ist zu erwarten, zum Beispiel falsche Eingabe</td><td>Fehler ist unerwartet oder nicht vorher prüfbar</td></tr>
+  <tr><td>Beispiel</td><td>Alter eintippen</td><td>Datei lesen, Netzwerk, Datenbank</td></tr>
+  <tr><td>Kosten</td><td>Schnell, ohne Ausnahme</td><td>Ausnahmen sind langsamer</td></tr>
+</table>
+<div class="note tip">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <div class="note-content">
+    <strong>Faustregel</strong>
+    Kannst du einen Fehler mit if oder TryParse vorher vermeiden, tu das. Nimm try catch für Dinge, die du nicht in der Hand hast.
+  </div>
+</div>
+<div class="summary">
+  <div class="summary-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+    Zusammenfassung
+  </div>
+  <div class="summary-row">
+    <span class="key">try</span>
+    <span class="sep"></span>
+    <span class="desc">Code mit Risiko</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">catch</span>
+    <span class="sep"></span>
+    <span class="desc">Reaktion auf einen Fehlertyp</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">finally</span>
+    <span class="sep"></span>
+    <span class="desc">Läuft immer</span>
+  </div>
+  <div class="summary-row">
+    <span class="key">Exception</span>
+    <span class="sep"></span>
+    <span class="desc">Oberbegriff aller Fehler</span>
+  </div>
+  <div class="summary-note">Ein Fehler beendet das Programm nur, wenn niemand ihn abfängt.</div>
+</div>
+<div class="tasks">
+  <div class="tasks-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Aufgaben
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">1</span>
+      <div class="task-text"><p>Was gibt der Code oben aus, wenn der Nutzer 4 eingibt?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Der try Block läuft ganz durch: 8 geteilt durch 4 ist 2, also <strong>Jeder bekommt 2 Stücke Pizza.</strong> Kein catch läuft. Danach kommt <strong>Guten Appetit!</strong> aus finally.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">2</span>
+      <div class="task-text"><p>Welche Ausnahme entsteht bei <code>int a = 0; int b = 10 / a;</code>?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p><code>DivideByZeroException</code>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">3</span>
+      <div class="task-text"><p>Wann läuft ein finally Block?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Immer. Egal, ob ein Fehler auftrat oder nicht.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">4</span>
+      <div class="task-text"><p>Schreibe ein Programmstück, das 20 Kekse auf die eingegebene Zahl an Kindern verteilt und ausgibt, wie viele jedes Kind bekommt. Bei Texteingabe und bei null Kindern soll jeweils eine eigene Meldung erscheinen.</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">try</span>
+{
+    <span class="kw">int</span> kinder = <span class="kw">int</span>.<span class="fn">Parse</span>(Console.<span class="fn">ReadLine</span>());
+    Console.<span class="fn">WriteLine</span>(<span class="num">20</span> / kinder);
+}
+<span class="kw">catch</span> (FormatException)
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Das war keine Zahl."</span>);
+}
+<span class="kw">catch</span> (DivideByZeroException)
+{
+    Console.<span class="fn">WriteLine</span>(<span class="str">"Ohne Kinder bleiben die Kekse da."</span>);
+}</code></pre>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">5</span>
+      <div class="task-text"><p>Wann nimmst du TryParse, wann try catch?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>TryParse bei erwartbaren Fehlern wie falschen Eingaben. try catch bei Fehlern, die du nicht vorher prüfen kannst, zum Beispiel beim Lesen einer Datei.</p>
+</div>
+    </details>
+  </div>
+</div>
+</section>
+
+<section class="tab-content" id="tab-zusammen">
+<h2 class="section-title">Alles zusammen</h2>
+<p class="section-subtitle">Ein Programm mit Schleife, Verzweigung und TryParse.</p>
+<p>Zum Schluss ein kleines Programm, das alles verbindet: Das Zahlenraten. Der Computer denkt sich eine Zahl von 1 bis 10 aus. Du rätst, bis du sie hast. Es zeigt eine Schleife, eine Verzweigung und TryParse.</p>
+<div class="folie"><svg viewBox="0 0 760 386" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="760" height="386" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="640.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="360.0" y="39.0" text-anchor="middle" font-size="12" font-weight="700" fill="#0071e3">zahlenraten</text><rect x="40.0" y="50.0" width="640.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="360.0" y="69.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">geheim ← Zufallszahl 1 bis 10</text><rect x="40.0" y="80.0" width="640.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="360.0" y="99.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">versuche ← 0, tipp ← 0</text><rect x="40.0" y="110.0" width="640.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="360.0" y="128.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">SOLANGE tipp &lt;&gt; geheim</text><rect x="40.0" y="138.0" width="22.0" height="194.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="62.0" y="138.0" width="618.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="371.0" y="157.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">EINGABE tipp</text><rect x="62.0" y="168.0" width="618.0" height="48.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="62.0" y1="168.0" x2="371.0" y2="216.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="680.0" y1="168.0" x2="371.0" y2="216.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="371.0" y="185.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">Eingabe ist Zahl ?</text><text x="72.0" y="210.0" text-anchor="start" font-size="10.5" font-weight="700" fill="#1e7b34">Ja</text><text x="670.0" y="210.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#c92a20">Nein</text><rect x="62.0" y="216.0" width="309.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="216.5" y="235.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">versuche ← versuche + 1</text><rect x="62.0" y="246.0" width="309.0" height="56.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="62.0" y1="246.0" x2="268.0" y2="302.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="371.0" y1="246.0" x2="268.0" y2="302.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="216.5" y="262.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">tipp gegen geheim</text><text x="113.5" y="297.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0071e3" stroke="#ffffff" stroke-width="3" paint-order="stroke">kleiner</text><rect x="62.0" y="302.0" width="103.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="113.5" y="321.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">"Zu klein"</text><text x="216.5" y="297.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0071e3" stroke="#ffffff" stroke-width="3" paint-order="stroke">größer</text><rect x="165.0" y="302.0" width="103.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="216.5" y="321.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">"Zu groß"</text><text x="319.5" y="297.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#0071e3" stroke="#ffffff" stroke-width="3" paint-order="stroke">gleich</text><rect x="268.0" y="302.0" width="103.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="371.0" y="216.0" width="309.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="525.5" y="235.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE "Keine Zahl"</text><rect x="371.0" y="246.0" width="309.0" height="86.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="40.0" y="332.0" width="640.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="360.0" y="351.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE versuche</text></svg></div>
+<pre><code>Random zufall = <span class="kw">new</span> <span class="fn">Random</span>();
+<span class="kw">int</span> geheim = zufall.<span class="fn">Next</span>(<span class="num">1</span>, <span class="num">11</span>);
+<span class="kw">int</span> versuche = <span class="num">0</span>;
+<span class="kw">int</span> tipp = <span class="num">0</span>;
+<span class="kw">while</span> (tipp != geheim)
+{
+    Console.<span class="fn">Write</span>(<span class="str">"Dein Tipp (1 bis 10): "</span>);
+    <span class="kw">if</span> (<span class="kw">int</span>.<span class="fn">TryParse</span>(Console.<span class="fn">ReadLine</span>(), <span class="kw">out</span> tipp))
+    {
+        versuche++;
+        <span class="kw">if</span> (tipp &lt; geheim)
+        {
+            Console.<span class="fn">WriteLine</span>(<span class="str">"Zu klein"</span>);
+        }
+        <span class="kw">else</span> <span class="kw">if</span> (tipp &gt; geheim)
+        {
+            Console.<span class="fn">WriteLine</span>(<span class="str">"Zu groß"</span>);
+        }
+    }
+    <span class="kw">else</span>
+    {
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Das war keine Zahl."</span>);
+    }
+}
+Console.<span class="fn">WriteLine</span>(<span class="str">"Richtig nach "</span> + versuche + <span class="str">" Versuchen!"</span>);</code></pre>
+<h3>Was hier passiert</h3>
+<ul class="keypoints">
+  <li><strong>Random</strong><span><code>zufall.Next(1, 11)</code> liefert eine Zufallszahl von 1 bis 10. Die obere Grenze zählt nicht mit.</span></li>
+  <li><strong>while</strong><span>Läuft weiter, solange der Tipp nicht stimmt.</span></li>
+  <li><strong>TryParse</strong><span>Fängt Eingaben wie »abc« ab. Dann bleibt tipp 0, und die Schleife läuft weiter.</span></li>
+  <li><strong>if else if</strong><span>Sagt dem Spieler, ob der Tipp zu klein oder zu groß war.</span></li>
+</ul>
+<div class="note idea">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <div class="note-content">
+    <strong>Probier es aus</strong>
+    Baue das Programm in Visual Studio nach. Erweitere es dann: Gib nach zehn Versuchen auf, oder lass den Spieler die Obergrenze festlegen.
+  </div>
+</div>
+<div class="tasks">
+  <div class="tasks-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Aufgaben
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">1</span>
+      <div class="task-text"><p>Welche Zeile sorgt dafür, dass bei der Eingabe »abc« nichts abstürzt?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p><code>int.TryParse(Console.ReadLine(), out tipp)</code>. Sie liefert <code>false</code> statt eine Ausnahme auszulösen.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">2</span>
+      <div class="task-text"><p>Warum steht <code>int tipp = 0;</code> schon vor der Schleife?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Die Bedingung <code>tipp != geheim</code> braucht beim ersten Prüfen schon einen Wert.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">3</span>
+      <div class="task-text"><p>Wie viele Versuche braucht der Spieler höchstens, wenn er die Zahl durch Halbieren sucht?</p>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Bei 10 Zahlen reichen <strong>vier</strong> Tipps, wenn jeder Tipp die Mitte der verbleibenden Zahlen trifft.</p>
+</div>
+    </details>
+  </div>
+</div>
+</section>
+
+<section class="tab-content" id="tab-spick">
+<h2 class="section-title">Spickzettel</h2>
+<p class="section-subtitle">Alle Bausteine, Entscheidungshilfen und typische Fehler auf einer Seite.</p>
+<p>Alles Wichtige auf einer Seite zum Nachschlagen.</p>
+<h3>Das Gerüst jeder Anweisung</h3>
+<table>
+  <tr><th>Baustein</th><th>Pseudocode</th><th>C#</th></tr>
+  <tr><td>Verzweigung</td><td>WENN, SONST</td><td><code>if (bedingung) { } else { }</code></td></tr>
+  <tr><td>Mehrere Bedingungen</td><td>SONST WENN</td><td><code>if (a) { } else if (b) { } else { }</code></td></tr>
+  <tr><td>Mehrfachauswahl</td><td>FALLS</td><td><code>switch (wert) { case 1: ... break; default: ... break; }</code></td></tr>
+  <tr><td>Kopfgesteuert</td><td>SOLANGE</td><td><code>while (bedingung) { }</code></td></tr>
+  <tr><td>Fußgesteuert</td><td>WIEDERHOLE BIS</td><td><code>do { } while (bedingung);</code></td></tr>
+  <tr><td>Zählschleife</td><td>FÜR i VON a BIS b</td><td><code>for (int i = a; i &lt;= b; i++) { }</code></td></tr>
+  <tr><td>Listenschleife</td><td>FÜR JEDEN x IN liste</td><td><code>foreach (int x in liste) { }</code></td></tr>
+  <tr><td>Sichere Umwandlung</td><td></td><td><code>if (int.TryParse(text, out int zahl)) { }</code></td></tr>
+  <tr><td>Fehler abfangen</td><td></td><td><code>try { } catch (FormatException) { } finally { }</code></td></tr>
+</table>
+<h3>Welche Schleife nehme ich?</h3>
+<table>
+  <tr><th>Situation</th><th>Schleife</th></tr>
+  <tr><td>Anzahl der Durchläufe steht fest</td><td><code>for</code></td></tr>
+  <tr><td>Alle Elemente einer Liste durchgehen</td><td><code>foreach</code></td></tr>
+  <tr><td>Wiederholen, solange etwas gilt, vielleicht nie</td><td><code>while</code></td></tr>
+  <tr><td>Mindestens einmal ausführen, zum Beispiel Eingabe prüfen</td><td><code>do while</code></td></tr>
+</table>
+<h3>Welche Absicherung nehme ich?</h3>
+<table>
+  <tr><th>Situation</th><th>Mittel</th></tr>
+  <tr><td>Nutzer tippt eine Zahl</td><td><code>TryParse</code></td></tr>
+  <tr><td>Datei, Netzwerk, Datenbank</td><td><code>try catch</code></td></tr>
+  <tr><td>Ein Wert muss in einem Bereich liegen</td><td><code>if</code> oder <code>do while</code></td></tr>
+</table>
+<h3>Häufige Fehler</h3>
+<table>
+  <tr><th>Fehler</th><th>Folge</th><th>Besser</th></tr>
+  <tr><td><code>=</code> statt <code>==</code> in der Bedingung</td><td>Fehlermeldung</td><td>Zwei Gleichheitszeichen vergleichen</td></tr>
+  <tr><td>Semikolon hinter <code>if (...)</code></td><td>Der Block gehört nicht mehr dazu</td><td>Kein Semikolon</td></tr>
+  <tr><td><code>&lt;</code> statt <code>&lt;=</code> in der Schleife</td><td>Ein Durchlauf fehlt</td><td>Grenze im Trockentest prüfen</td></tr>
+  <tr><td><code>i++</code> vergessen</td><td>Endlosschleife</td><td>Die Bedingungsvariable im Block verändern</td></tr>
+  <tr><td><code>break</code> im switch vergessen</td><td>Fehlermeldung beim Übersetzen</td><td>Jeder Fall endet mit break</td></tr>
+  <tr><td>Summe oder Zähler ohne Startwert</td><td>Falsches Ergebnis oder Fehler</td><td>Vor der Schleife auf 0 setzen</td></tr>
+  <tr><td>Array Index <code>Length</code> benutzt</td><td>IndexOutOfRangeException</td><td>Höchster Index ist Length minus 1</td></tr>
+  <tr><td><code>int.Parse</code> bei Nutzereingaben</td><td>Absturz bei Buchstaben</td><td><code>int.TryParse</code></td></tr>
+  <tr><td>WIEDERHOLE BIS ohne Umdrehen übernommen</td><td>Schleife endet nie oder sofort</td><td>Bedingung für do while umdrehen</td></tr>
+</table>
+</section>
+
+<section class="tab-content" id="tab-uebungen">
+<h2 class="section-title">Übungen</h2>
+<p class="section-subtitle">Zehn Aufgaben mit Lösung zum Selbsttest.</p>
+<div class="note info">
+  <svg class="icon note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <div class="note-content">
+    <strong>So übst du richtig</strong>
+    Löse die Aufgaben zuerst selbst, am besten in Visual Studio. Klappe danach die Lösung auf und vergleiche.
+  </div>
+</div>
+<div class="tasks">
+  <div class="tasks-header">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    Aufgaben
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">1</span>
+      <div class="task-text"><p><strong>Aufgabe 1.</strong> Was gibt der Code aus? <code>int a = 3; int b = 8; if (a &gt; b) { Console.WriteLine(a); } else { Console.WriteLine(b); }</code></p></div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p><strong>8</strong>. Die Bedingung <code>3 &gt; 8</code> ist falsch, also läuft der else Block.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">2</span>
+      <div class="task-text"><p><strong>Aufgabe 2.</strong> Schreibe ein switch für <code>monat</code>. Bei 12, 1 und 2 soll »Winter« erscheinen, bei 3 bis 5 »Frühling«, bei 6 bis 8 »Sommer«, bei 9 bis 11 »Herbst«, sonst »Ungültig«.</p></div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">switch</span> (monat)
+{
+    <span class="kw">case</span> <span class="num">12</span>:
+    <span class="kw">case</span> <span class="num">1</span>:
+    <span class="kw">case</span> <span class="num">2</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Winter"</span>);
+        <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="num">3</span>:
+    <span class="kw">case</span> <span class="num">4</span>:
+    <span class="kw">case</span> <span class="num">5</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Frühling"</span>);
+        <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="num">6</span>:
+    <span class="kw">case</span> <span class="num">7</span>:
+    <span class="kw">case</span> <span class="num">8</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Sommer"</span>);
+        <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="num">9</span>:
+    <span class="kw">case</span> <span class="num">10</span>:
+    <span class="kw">case</span> <span class="num">11</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Herbst"</span>);
+        <span class="kw">break</span>;
+    <span class="kw">default</span>:
+        Console.<span class="fn">WriteLine</span>(<span class="str">"Ungültig"</span>);
+        <span class="kw">break</span>;
+}</code></pre>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">3</span>
+      <div class="task-text"><p><strong>Aufgabe 3.</strong> Zeichne ein Struktogramm: Eine Zahl wird eingelesen. Ist sie gerade, wird »gerade« ausgegeben, sonst »ungerade«.</p></div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><div class="folie"><svg viewBox="0 0 500 152" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="500" height="152" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="420.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="250.0" y="39.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">EINGABE zahl</text><rect x="40.0" y="50.0" width="420.0" height="48.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="40.0" y1="50.0" x2="250.0" y2="98.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="460.0" y1="50.0" x2="250.0" y2="98.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="250.0" y="67.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">zahl MOD 2 = 0 ?</text><text x="50.0" y="92.0" text-anchor="start" font-size="10.5" font-weight="700" fill="#1e7b34">Ja</text><text x="450.0" y="92.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#c92a20">Nein</text><rect x="40.0" y="98.0" width="210.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="145.0" y="117.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE "gerade"</text><rect x="250.0" y="98.0" width="210.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="355.0" y="117.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE "ungerade"</text></svg></div>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">4</span>
+      <div class="task-text"><p><strong>Aufgabe 4.</strong> Spiele durch: <code>int n = 1; while (n &lt; 100) { n = n * 2; }</code>. Wie oft läuft die Schleife und welchen Wert hat n?</p></div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>n wird 2, 4, 8, 16, 32, 64, 128. Bei 128 gilt <code>128 &lt; 100</code> nicht mehr. Die Schleife läuft <strong>7 Mal</strong>, n ist <strong>128</strong>.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">5</span>
+      <div class="task-text"><p><strong>Aufgabe 5.</strong> Schreibe eine for Schleife, die die Quadratzahlen von 1 bis 5 ausgibt, also 1, 4, 9, 16, 25.</p></div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">5</span>; i++)
+{
+    Console.<span class="fn">WriteLine</span>(i * i);
+}</code></pre>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">6</span>
+      <div class="task-text"><p><strong>Aufgabe 6.</strong> Schreibe ein Programm mit do while: Der Nutzer soll eine Zahl zwischen 1 und 100 eingeben. Die Eingabe wird wiederholt, bis sie passt. Verwende TryParse.</p></div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">int</span> zahl;
+<span class="kw">bool</span> ok;
+<span class="kw">do</span>
+{
+    Console.<span class="fn">Write</span>(<span class="str">"Zahl von 1 bis 100: "</span>);
+    ok = <span class="kw">int</span>.<span class="fn">TryParse</span>(Console.<span class="fn">ReadLine</span>(), <span class="kw">out</span> zahl);
+}
+<span class="kw">while</span> (!ok || zahl &lt; <span class="num">1</span> || zahl &gt; <span class="num">100</span>);</code></pre>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">7</span>
+      <div class="task-text"><p><strong>Aufgabe 7.</strong> Setze das Struktogramm in C# um.</p><div class="folie"><svg viewBox="0 0 500 210" style="width:100%;max-width:900px;display:block;margin:0.5rem auto 0.8rem;" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif"><rect width="500" height="210" rx="14" fill="#ffffff"/><rect x="40.0" y="20.0" width="420.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="250.0" y="39.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">anzahl ← 0</text><rect x="40.0" y="50.0" width="420.0" height="28.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="250.0" y="68.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">FÜR JEDEN z IN zahlen</text><rect x="40.0" y="78.0" width="22.0" height="78.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="62.0" y="78.0" width="398.0" height="48.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><line x1="62.0" y1="78.0" x2="261.0" y2="126.0" stroke="#1d1d1f" stroke-width="1.5"/><line x1="460.0" y1="78.0" x2="261.0" y2="126.0" stroke="#1d1d1f" stroke-width="1.5"/><text x="261.0" y="95.0" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">z MOD 2 = 0 ?</text><text x="72.0" y="120.0" text-anchor="start" font-size="10.5" font-weight="700" fill="#1e7b34">Ja</text><text x="450.0" y="120.0" text-anchor="end" font-size="10.5" font-weight="700" fill="#c92a20">Nein</text><rect x="62.0" y="126.0" width="199.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="161.5" y="145.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">anzahl ← anzahl + 1</text><rect x="261.0" y="126.0" width="199.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><rect x="40.0" y="156.0" width="420.0" height="30.0" fill="#ffffff" stroke="#1d1d1f" stroke-width="1.5"/><text x="250.0" y="175.0" text-anchor="middle" font-size="12" font-weight="600" fill="#1d1d1f" font-family="Consolas, Courier New, monospace">AUSGABE anzahl</text></svg></div>
+</div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><pre><code><span class="kw">int</span> anzahl = <span class="num">0</span>;
+<span class="kw">foreach</span> (<span class="kw">int</span> z <span class="kw">in</span> zahlen)
+{
+    <span class="kw">if</span> (z % <span class="num">2</span> == <span class="num">0</span>)
+    {
+        anzahl++;
+    }
+}
+Console.<span class="fn">WriteLine</span>(anzahl);</code></pre>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">8</span>
+      <div class="task-text"><p><strong>Aufgabe 8.</strong> Der Code soll die Summe aller Zahlen im Array <code>zahlen</code> berechnen. Finde die Fehler. <code>int summe; foreach (int z in zahlen) { summe = z; } Console.WriteLine(summe);</code></p></div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Erstens hat <code>summe</code> keinen Startwert, es fehlt <code>= 0</code>. Zweitens überschreibt <code>summe = z</code> den Wert bei jedem Durchlauf. Es muss <code>summe = summe + z</code> heißen.</p>
+<pre><code><span class="kw">int</span> summe = <span class="num">0</span>;
+<span class="kw">foreach</span> (<span class="kw">int</span> z <span class="kw">in</span> zahlen)
+{
+    summe = summe + z;
+}
+Console.<span class="fn">WriteLine</span>(summe);</code></pre>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">9</span>
+      <div class="task-text"><p><strong>Aufgabe 9.</strong> Wann nimmst du eine do while Schleife statt einer while Schleife?</p></div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Wenn der Block mindestens einmal laufen muss, zum Beispiel bei einer Eingabe, die geprüft und wiederholt wird.</p>
+</div>
+    </details>
+  </div>
+  <div class="task">
+    <div class="task-row">
+      <span class="task-letter">10</span>
+      <div class="task-text"><p><strong>Aufgabe 10.</strong> Was gibt der Code aus? <code>try { int x = int.Parse("12"); Console.WriteLine(x * 2); } catch (FormatException) { Console.WriteLine("Fehler"); } finally { Console.WriteLine("Ende"); }</code></p></div>
+    </div>
+    <details class="solution">
+      <summary>Lösung anzeigen</summary>
+      <div class="sol-content"><p>Zuerst <strong>24</strong>, dann <strong>Ende</strong>. Die Umwandlung klappt, das catch läuft nicht, finally läuft immer.</p>
+</div>
+    </details>
+  </div>
+</div>
+</section>
+
+</main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
